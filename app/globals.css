@@ -1,26 +1,95 @@
 @import "tailwindcss";
 
+@font-face {
+  font-family: "Helvetica World";
+  src: url("/fonts/HelveticaWorld-Regular.ttf") format("truetype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Helvetica World";
+  src: url("/fonts/HelveticaWorld-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Times New Roman MT Condensed";
+  src: url("/fonts/TimesNewRomanMT-Condensed-Regular.otf")
+    format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Times New Roman MT Condensed";
+  src: url("/fonts/TimesNewRomanMT-Condensed-Italic.otf")
+    format("opentype");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --blue: #9ed8f5;
+  --blue-light: #dff3fc;
+
+  --pink: #f3b6c8;
+  --pink-light: #fbe4eb;
+
+  --yellow: #f6df4f;
+  --yellow-light: #fff4a8;
+
+  --green: #b7f34a;
+  --green-light: #dfff9c;
+
+  --cream: #f8f5ee;
+  --paper: #fffdf8;
+
+  --black: #111111;
+  --gray: #6f6f6f;
+  --white: #ffffff;
+
+  --font-helvetica: "Helvetica World", Arial, sans-serif;
+  --font-times-condensed:
+    "Times New Roman MT Condensed", "Times New Roman", serif;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+.font-helvetica {
+  font-family: var(--font-helvetica);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+.font-condensed {
+  font-family: var(--font-times-condensed);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  background: var(--cream);
+  color: var(--black);
+  font-family: var(--font-helvetica);
+}
+
+button,
+a,
+input,
+textarea {
+  font-family: inherit;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
 }
