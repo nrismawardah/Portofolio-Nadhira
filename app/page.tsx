@@ -1,42 +1,5 @@
 import Navbar from "@/components/navigation/Navbar";
-
-const sections = [
-  {
-    id: "home",
-    title: "HOME",
-    className: "bg-[#9ed8f5]",
-  },
-  {
-    id: "about",
-    title: "ABOUT ME",
-    className: "bg-[#f3b6c8]",
-  },
-  {
-    id: "experience",
-    title: "EXPERIENCE",
-    className: "bg-[#9ed8f5]",
-  },
-  {
-    id: "projects",
-    title: "PROJECTS",
-    className: "bg-[#c9a27e]",
-  },
-  {
-    id: "skills",
-    title: "SKILLS & TOOLS",
-    className: "bg-[#f8f5ee]",
-  },
-  {
-    id: "certifications",
-    title: "CERTIFICATIONS",
-    className: "bg-[#f8f5ee]",
-  },
-  {
-    id: "contact",
-    title: "CONTACT",
-    className: "bg-[#b7f34a]",
-  },
-];
+import Hero from "@/components/sections/Hero";
 
 export default function Home() {
   return (
@@ -44,17 +7,62 @@ export default function Home() {
       <Navbar />
 
       <main>
-        {sections.map((section) => (
-          <section
-  key={section.id}
-  id={section.id}
-  className={`flex min-h-screen w-full max-w-full items-center justify-center overflow-hidden ${section.className}`}
->
-  <h1 className="max-w-full break-words px-6 text-center font-condensed text-5xl sm:text-7xl md:text-9xl">
-    {section.title}
-  </h1>
-</section>
-        ))}
+        <Hero />
+
+        {/* Temporary sections for navigation testing */}
+        <section
+          id="about"
+          className="flex min-h-screen items-center justify-center bg-[#f3b6c8]"
+        >
+          <h2 className="font-condensed text-6xl sm:text-8xl">
+            ABOUT ME
+          </h2>
+        </section>
+
+        <section
+          id="experience"
+          className="flex min-h-screen items-center justify-center bg-[#9ed8f5]"
+        >
+          <h2 className="font-condensed text-6xl sm:text-8xl">
+            EXPERIENCE
+          </h2>
+        </section>
+
+        <section
+          id="projects"
+          className="flex min-h-screen items-center justify-center bg-[#c9a27e]"
+        >
+          <h2 className="font-condensed text-6xl sm:text-8xl">
+            PROJECTS
+          </h2>
+        </section>
+
+        <section
+          id="skills"
+          className="flex min-h-screen items-center justify-center bg-[#f8f5ee]"
+        >
+          <h2 className="font-condensed text-6xl sm:text-8xl">
+            SKILLS & TOOLS
+          </h2>
+        </section>
+
+        <section
+          id="certifications"
+          className="flex min-h-screen items-center justify-center bg-[#f8f5ee]"
+        >
+          <h2 className="font-condensed text-6xl sm:text-8xl">
+            CERTIFICATIONS
+          </h2>
+        </section>
+
+        <section
+          id="contact"
+          className="flex min-h-screen items-center justify-center bg-[#b7f34a]"
+        >
+          <h2 className="font-condensed text-6xl sm:text-8xl">
+            CONTACT
+          </h2>
+        </section>
       </main>
     </>
   );
