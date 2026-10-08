@@ -73,6 +73,7 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 body {
@@ -80,6 +81,7 @@ body {
   background: var(--cream);
   color: var(--black);
   font-family: var(--font-helvetica);
+  overflow-x: hidden;
 }
 
 button,
