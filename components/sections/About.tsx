@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import {
+  Camera,
   ChevronLeft,
   ChevronRight,
   Heart,
@@ -123,13 +124,13 @@ export default function About() {
         backgroundImage: "url('/images/about/background-about.png')",
       }}
     >
-      {/* Soft overlay to keep the scrapbook readable */}
       <div className="absolute inset-0 -z-10 bg-pink-950/10" />
 
-      <div className="mx-auto grid w-full max-w-[1440px] grid-cols-1 items-center gap-12 lg:grid-cols-12 lg:gap-0">
-        {/* LEFT: PHOTO BOOTH */}
+      {/* MAIN GRID */}
+      <div className="mx-auto grid w-full max-w-[1440px] grid-cols-2 items-start gap-x-3 gap-y-7 sm:gap-x-5 sm:gap-y-10 lg:grid-cols-12 lg:items-center lg:gap-0">
+        {/* PHOTO BOOTH */}
         <motion.div
-          className="relative z-0 mx-auto w-full max-w-[680px] lg:col-span-6 lg:col-start-1 lg:row-start-1 lg:mx-0 lg:max-w-none"
+          className="relative z-0 col-span-2 mx-auto w-full max-w-[680px] lg:col-span-6 lg:col-start-1 lg:row-start-1 lg:mx-0 lg:max-w-none"
           initial={{ opacity: 0, y: 24, rotate: -1.5 }}
           whileInView={{ opacity: 1, y: 0, rotate: 0 }}
           viewport={{ once: true, amount: 0.2 }}
@@ -137,18 +138,18 @@ export default function About() {
         >
           <div className="overflow-hidden border border-neutral-400/80 bg-[#e9e9e9] shadow-[0_18px_45px_rgba(70,20,40,0.25)]">
             {/* macOS title bar */}
-            <div className="relative flex h-8 items-center justify-between border-b border-neutral-400 bg-gradient-to-b from-[#f9f9f9] to-[#d9d9d9] px-3">
+            <div className="relative flex h-7 items-center justify-between border-b border-neutral-400 bg-gradient-to-b from-[#f9f9f9] to-[#d9d9d9] px-3 sm:h-8">
               <div className="flex items-center gap-[5px]">
-                <span className="h-[11px] w-[11px] rounded-full border border-[#d85b54] bg-[#ff6259]" />
-                <span className="h-[11px] w-[11px] rounded-full border border-[#d5a23c] bg-[#ffbd2e]" />
-                <span className="h-[11px] w-[11px] rounded-full border border-[#45a45b] bg-[#28c840]" />
+                <span className="h-[9px] w-[9px] rounded-full border border-[#d85b54] bg-[#ff6259] sm:h-[11px] sm:w-[11px]" />
+                <span className="h-[9px] w-[9px] rounded-full border border-[#d5a23c] bg-[#ffbd2e] sm:h-[11px] sm:w-[11px]" />
+                <span className="h-[9px] w-[9px] rounded-full border border-[#45a45b] bg-[#28c840] sm:h-[11px] sm:w-[11px]" />
               </div>
 
-              <span className="absolute left-1/2 -translate-x-1/2 text-[11px] font-medium text-neutral-700">
+              <span className="absolute left-1/2 -translate-x-1/2 text-[10px] font-medium text-neutral-700 sm:text-[11px]">
                 Photo Booth
               </span>
 
-              <span className="w-10" />
+              <span className="w-8 sm:w-10" />
             </div>
 
             {/* Portrait */}
@@ -158,12 +159,14 @@ export default function About() {
                 alt="A portrait of Nadhira"
                 fill
                 priority
-                sizes="(max-width: 1024px) 90vw, 38vw"
+                sizes="(max-width: 1024px) 94vw, 38vw"
                 className="object-cover object-center"
               />
 
               <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-pink-200/10 via-transparent to-black/10" />
             </div>
+
+            {/* Photo Booth controls */}
 
             {/* Photo Booth controls */}
             <div className="flex h-12 items-center justify-between border-t border-neutral-300 bg-gradient-to-b from-[#fafafa] to-[#e3e3e3] px-4">
@@ -179,8 +182,9 @@ export default function About() {
                 </span>
               </div>
 
-              <div className="grid h-9 w-9 place-items-center rounded-full border-[3px] border-white bg-[#d85a54] shadow-sm">
-                <span className="h-4 w-4 rounded-full border-2 border-white" />
+              {/* Red camera button */}
+              <div className="grid h-9 w-9 place-items-center rounded-full bg-[#d85a54] text-white shadow-sm">
+                <Camera size={20} strokeWidth={2.2} />
               </div>
 
               <span className="w-10" />
@@ -189,46 +193,69 @@ export default function About() {
 
           {/* Location sticker */}
           <motion.div
-            className="relative mt-6 inline-flex max-w-full items-center rounded-full bg-[#f5f2f4] px-4 py-2 text-base text-neutral-900 shadow-md sm:text-lg lg:-ml-1 lg:mt-10 lg:px-5 lg:py-3 lg:text-xl"
+            className="relative mt-3 inline-flex max-w-full items-center rounded-full bg-[#f5f2f4] px-3 py-1.5 text-xs text-neutral-900 shadow-md sm:mt-6 sm:px-4 sm:py-2 sm:text-base lg:-ml-1 lg:mt-10 lg:px-5 lg:py-3 lg:text-xl"
             whileHover={{ y: -3, rotate: -1 }}
             transition={{ duration: 0.2 }}
           >
             based in Yogyakarta
-            <span className="absolute -right-2 -top-3 grid h-8 w-8 place-items-center rounded-full border border-pink-100 bg-white shadow-sm">
-              <Heart size={18} fill="#ff3864" stroke="#ff3864" />
+            <span className="absolute -right-2 -top-2 grid h-6 w-6 place-items-center rounded-full border border-pink-100 bg-white shadow-sm sm:-top-3 sm:h-8 sm:w-8">
+              <Heart
+                size={15}
+                fill="#ff3864"
+                stroke="#ff3864"
+                className="sm:hidden"
+              />
+              <Heart
+                size={18}
+                fill="#ff3864"
+                stroke="#ff3864"
+                className="hidden sm:block"
+              />
             </span>
           </motion.div>
         </motion.div>
 
-        {/* CENTER: NOTES WINDOW */}
+        {/* NOTES */}
         <motion.div
-          className="relative z-20 mx-auto w-full max-w-[490px] lg:col-span-5 lg:col-start-4 lg:row-start-1 lg:mx-0 lg:mt-36 lg:max-w-none lg:translate-x-12"
+          className="relative z-20 col-span-1 w-full min-w-0 lg:col-span-5 lg:col-start-4 lg:row-start-1 lg:mx-0 lg:mt-36 lg:max-w-none lg:translate-x-12"
           initial={{ opacity: 0, y: 28, rotate: 1 }}
           whileInView={{ opacity: 1, y: 0, rotate: 0 }}
           viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 0.65, delay: 0.12, ease: "easeOut" }}
         >
-          <div className="overflow-hidden rounded-[14px] bg-[#faf7f2] text-[#171717] shadow-[0_20px_55px_rgba(60,20,35,0.2)]">
+          <div className="overflow-hidden rounded-[10px] bg-[#faf7f2] text-[#171717] shadow-[0_12px_30px_rgba(60,20,35,0.2)] sm:rounded-[14px] sm:shadow-[0_20px_55px_rgba(60,20,35,0.2)]">
             {/* Notes toolbar */}
-            <div className="flex h-[62px] items-center justify-between px-5 sm:px-7">
-              <div className="flex items-center gap-2 text-[#e9a51b]">
-                <ChevronLeft size={25} strokeWidth={1.5} />
-                <span className="text-lg font-semibold">Notes</span>
+            <div className="flex h-9 items-center justify-between px-2 sm:h-[62px] sm:px-7">
+              <div className="flex items-center gap-0.5 text-[#e9a51b] sm:gap-2">
+                <ChevronLeft
+                  size={18}
+                  strokeWidth={1.5}
+                  className="sm:h-[25px] sm:w-[25px]"
+                />
+                <span className="text-xs font-semibold sm:text-lg">Notes</span>
               </div>
 
-              <div className="flex items-center gap-5 text-[#e9a51b]">
-                <Share size={23} strokeWidth={1.6} />
-                <MoreHorizontal size={28} strokeWidth={1.6} />
+              <div className="flex items-center gap-1.5 text-[#e9a51b] sm:gap-5">
+                <Share
+                  size={15}
+                  strokeWidth={1.6}
+                  className="sm:h-[23px] sm:w-[23px]"
+                />
+                <MoreHorizontal
+                  size={19}
+                  strokeWidth={1.6}
+                  className="sm:h-7 sm:w-7"
+                />
               </div>
             </div>
 
             {/* Notes content */}
-            <div className="px-5 pb-6 sm:px-6 sm:pb-7">
-              <h2 className="mb-3 text-[24px] font-bold tracking-tight text-[#33351e] sm:text-[27px]">
+            <div className="px-3 pb-3 sm:px-6 sm:pb-7">
+              <h2 className="mb-2 text-[15px] font-bold leading-tight tracking-tight text-[#33351e] sm:mb-3 sm:text-[27px]">
                 Hi! I’m Nadhira
               </h2>
 
-              <div className="space-y-4 text-[15px] leading-[1.6] sm:text-[17px] sm:leading-[1.6]">
+              <div className="space-y-2 text-[10px] leading-[1.5] sm:space-y-4 sm:text-[17px] sm:leading-[1.6]">
                 <p>
                   I’m an Information Technology graduate with a focus on Data
                   Science, Artificial Intelligence, and Web Development. I love
@@ -244,26 +271,26 @@ export default function About() {
           </div>
         </motion.div>
 
-        {/* RIGHT: OBSESSIONS COLLAGE */}
+        {/* THINGS I'M OBSESSED WITH */}
         <motion.div
-          className="relative z-10 w-full lg:col-span-3 lg:col-start-10 lg:row-start-1 lg:pt-4"
+          className="relative z-10 col-span-1 w-full min-w-0 lg:col-span-3 lg:col-start-10 lg:row-start-1 lg:pt-4"
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.15 }}
           transition={{ duration: 0.65, delay: 0.2, ease: "easeOut" }}
         >
-          <h2 className="mb-7 text-center text-2xl font-medium tracking-tight text-white drop-shadow-[0_2px_5px_rgba(60,10,30,0.55)] sm:text-3xl lg:text-left lg:text-[20px]">
+          <h2 className="mb-3 text-center text-[11px] font-medium leading-tight tracking-tight text-white drop-shadow-[0_2px_5px_rgba(60,10,30,0.55)] sm:mb-7 sm:text-3xl lg:text-left lg:text-[20px]">
             (things i obsessed with...)
           </h2>
 
-          <div className="mx-auto grid max-w-[250px] grid-cols-2 gap-3 sm:gap-4 lg:gap-3 xl:gap-4">
+          <div className="mx-auto grid w-full max-w-[250px] grid-cols-2 gap-1.5 sm:gap-4 lg:gap-3 xl:gap-4">
             {obsessions.map((item, index) => (
               <motion.button
                 key={item.title}
                 type="button"
                 onClick={() => setActiveIndex(index)}
                 aria-label={`View ${item.title}: ${item.subtitle}`}
-                className="group relative aspect-square overflow-hidden rounded-[10px] border-[7px] border-[#ff6b96] bg-[#ffb8cd] shadow-[0_6px_14px_rgba(80,10,40,0.18)] outline-none transition-colors hover:border-[#ff477d] focus-visible:ring-4 focus-visible:ring-white"
+                className="group relative aspect-square overflow-hidden rounded-[6px] border-[4px] border-[#ff6b96] bg-[#ffb8cd] shadow-[0_6px_14px_rgba(80,10,40,0.18)] outline-none transition-colors hover:border-[#ff477d] focus-visible:ring-4 focus-visible:ring-white sm:rounded-[10px] sm:border-[7px]"
                 whileHover={{
                   y: -5,
                   rotate: index % 2 === 0 ? -2 : 2,
@@ -276,12 +303,12 @@ export default function About() {
                   src={item.src}
                   alt={item.title}
                   fill
-                  sizes="(max-width: 1024px) 40vw, 15vw"
+                  sizes="(max-width: 1024px) 20vw, 15vw"
                   className="object-cover transition-transform duration-500 group-hover:scale-110"
                 />
 
                 <span className="absolute inset-0 bg-black/0 transition-colors duration-300 group-hover:bg-black/15" />
-                <span className="absolute inset-x-0 bottom-0 translate-y-full bg-black/55 px-1 py-2 text-center text-xs font-medium text-white transition-transform duration-300 group-hover:translate-y-0">
+                <span className="absolute inset-x-0 bottom-0 translate-y-full bg-black/55 px-1 py-1 text-center text-[9px] font-medium text-white transition-transform duration-300 group-hover:translate-y-0 sm:py-2 sm:text-xs">
                   {item.title}
                 </span>
               </motion.button>
@@ -329,14 +356,14 @@ export default function About() {
             <AnimatePresence mode="wait">
               <motion.div
                 key={activeObsession.title}
-                className="relative z-10 flex max-h-[90vh] w-full max-w-4xl flex-col overflow-hidden rounded-2xl bg-[#faf7f2] shadow-2xl md:flex-row"
+                className="relative z-10 flex max-h-[90vh] w-full max-w-4xl flex-col overflow-y-auto rounded-2xl bg-[#faf7f2] shadow-2xl md:flex-row md:overflow-hidden"
                 onClick={(event) => event.stopPropagation()}
                 initial={{ opacity: 0, scale: 0.97, y: 10 }}
                 animate={{ opacity: 1, scale: 1, y: 0 }}
                 exit={{ opacity: 0, scale: 0.98, y: -5 }}
                 transition={{ duration: 0.2, ease: "easeOut" }}
               >
-                <div className="relative min-h-[240px] flex-1  md:min-h-[480px]">
+                <div className="relative min-h-[240px] flex-1 md:min-h-[480px]">
                   <Image
                     src={activeObsession.src}
                     alt={activeObsession.title}
