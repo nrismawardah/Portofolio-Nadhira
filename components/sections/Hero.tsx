@@ -1,12 +1,59 @@
 "use client";
 
 import Image from "next/image";
-import { motion } from "motion/react";
+import { AnimatePresence, motion } from "motion/react";
 import PhotoFrame from "@/components/ui/PhotoFrame";
 import SmallPhotoFrame from "@/components/ui/SmallPhotoFrame";
 import TextHighlight from "@/components/ui/TextHighlight";
+import { useCallback, useState } from "react";
+import GalleryLightbox, {
+  type GalleryPhoto,
+} from "@/components/ui/GalleryLightbox";
 
 export default function Hero() {
+  const photos: GalleryPhoto[] = [
+    {
+      src: "/images/hero/graduate.jpeg",
+      alt: "Nadhira at graduation",
+      filename: "graduate.png",
+    },
+    {
+      src: "/images/hero/me (2).jpeg",
+      alt: "Nadhira",
+      filename: "me.png",
+    },
+    {
+      src: "/images/hero/coffee+laptop.PNG",
+      alt: "Coffee and laptop",
+      filename: "coffee+laptop.png",
+    },
+    {
+      src: "/images/hero/painting.PNG",
+      alt: "Painting",
+      filename: "painting.jpg",
+    },
+    {
+      src: "/images/hero/jogja.jpg",
+      alt: "Yogyakarta",
+      filename: "jogja.jpg",
+    },
+    {
+      src: "/images/hero/hometown (2).jpg",
+      alt: "Hometown",
+      filename: "hometown.jpg",
+    },
+  ];
+
+  const [activePhotoIndex, setActivePhotoIndex] = useState<number | null>(null);
+
+  const closeLightbox = useCallback(() => {
+    setActivePhotoIndex(null);
+  }, []);
+
+  const navigateLightbox = useCallback((index: number) => {
+    setActivePhotoIndex(index);
+  }, []);
+
   return (
     <section
       id="home"
@@ -40,6 +87,7 @@ export default function Hero() {
           filename="graduate.png"
           width="clamp(200px, 19vw, 290px)"
           priority
+          onClick={() => setActivePhotoIndex(0)}
         />
       </motion.div>
 
@@ -54,22 +102,24 @@ export default function Hero() {
         "
       >
         <PhotoFrame
-          src="/images/hero/me.jpeg"
+          src="/images/hero/me (2).jpeg"
           alt="Nadhira"
           filename="me.png"
           width="clamp(180px, 16vw, 245px)"
           priority
+          onClick={() => setActivePhotoIndex(1)}
         />
       </motion.div>
 
       {/* CENTER CONTENT — DESKTOP */}
       <div
         className="
-          absolute inset-0 z-20
-          flex items-center justify-center
-          px-6
-          max-md:hidden
-        "
+    pointer-events-none
+    absolute inset-0 z-20
+    flex items-center justify-center
+    px-6
+    max-md:hidden
+  "
       >
         <div className="mt-[5%] flex w-full max-w-[900px] flex-col items-center text-center">
           {/* NADHIRA */}
@@ -139,21 +189,15 @@ export default function Hero() {
             </span>
 
             <span className="block">
-              <TextHighlight>
-                data, AI, and web development
-              </TextHighlight>
+              <TextHighlight>data, AI, and web development</TextHighlight>
               {" and"}
             </span>
 
-            <span className="block">
-              enjoy turning complex problems into
-            </span>
+            <span className="block">enjoy turning complex problems into</span>
 
             <span className="block">
               <span className="relative inline-block">
-                <span className="relative z-10">
-                  meaningful projects
-                </span>
+                <span className="relative z-10">meaningful projects</span>
 
                 <span
                   className="
@@ -189,6 +233,7 @@ export default function Hero() {
           alt="Coffee and laptop"
           filename="coffee+laptop.png"
           width="clamp(220px, 20vw, 300px)"
+          onClick={() => setActivePhotoIndex(2)}
         />
       </motion.div>
 
@@ -211,6 +256,7 @@ export default function Hero() {
             src="/images/hero/painting.PNG"
             alt="Painting"
             filename="painting.jpg"
+            onClick={() => setActivePhotoIndex(3)}
           />
         </div>
       </div>
@@ -234,6 +280,7 @@ export default function Hero() {
             src="/images/hero/jogja.jpg"
             alt="Yogyakarta"
             filename="jogja.jpg"
+            onClick={() => setActivePhotoIndex(4)}
           />
         </div>
       </div>
@@ -254,9 +301,10 @@ export default function Hero() {
           "
         >
           <SmallPhotoFrame
-            src="/images/hero/hometown.jpg"
+            src="/images/hero/hometown (2).jpg"
             alt="Hometown"
             filename="hometown.jpg"
+            onClick={() => setActivePhotoIndex(5)}
           />
         </div>
       </div>
@@ -264,73 +312,130 @@ export default function Hero() {
       {/* HEADPHONES — DESKTOP */}
       <motion.div
         animate={{ y: [0, -6, 0] }}
-        transition={{
-          duration: 4,
-          repeat: Infinity,
-          ease: "easeInOut",
+        whileHover={{
+          scale: 1.15,
+          rotate: 5,
         }}
-        className="
-          absolute left-[23%] top-[28%]
-          z-50 w-[65px]
-          rotate-[-8deg]
-          max-md:hidden
-        "
+        transition={{
+          y: {
+            duration: 4,
+            repeat: Infinity,
+            ease: "easeInOut",
+          },
+          scale: {
+            duration: 0.2,
+          },
+          rotate: {
+            duration: 0.2,
+          },
+        }}
+        className="absolute left-[23%] top-[28%] z-50 w-[65px] rotate-[-8deg] max-md:hidden"
       >
         <Image
           src="/stickers/headphone.png"
           alt=""
+          aria-hidden="true"
           width={150}
           height={150}
-          className="h-auto w-full"
+          className="h-auto w-full pointer-events-none"
         />
       </motion.div>
 
       {/* EYES — DESKTOP */}
-      <div
+      <motion.div
+        animate={{ y: [0, -6, 0] }}
+        whileHover={{
+          scale: 1.15,
+          rotate: 5,
+        }}
+        transition={{
+          y: {
+            duration: 4,
+            repeat: Infinity,
+            ease: "easeInOut",
+          },
+          scale: {
+            duration: 0.2,
+          },
+          rotate: {
+            duration: 0.2,
+          },
+        }}
         className="
           absolute right-[2%] top-[17%]
           z-20 w-[65px]
+          rotate-[-8deg]
           max-md:hidden
         "
       >
         <Image
           src="/stickers/eyes.png"
           alt=""
+          aria-hidden="true"
           width={150}
           height={150}
           className="
-            h-auto w-full
-            rotate-[2deg]
+            h-auto w-full pointer-events-none
           "
         />
-      </div>
+      </motion.div>
 
       {/* SPARKLES — DESKTOP */}
       <motion.div
-        animate={{ rotate: [0, 5, -5, 0] }}
+        animate={{ y: [0, -6, 0] }}
+        whileHover={{
+          scale: 1.15,
+          rotate: 5,
+        }}
         transition={{
-          duration: 5,
-          repeat: Infinity,
-          ease: "easeInOut",
+          y: {
+            duration: 4,
+            repeat: Infinity,
+            ease: "easeInOut",
+          },
+          scale: {
+            duration: 0.2,
+          },
+          rotate: {
+            duration: 0.2,
+          },
         }}
         className="
           absolute right-[34%] top-[21%]
           z-50 w-[55px]
-          rotate-[3deg]
           max-md:hidden
         "
       >
         <Image
           src="/stickers/sparkles.png"
           alt=""
+          aria-hidden="true"
           width={120}
           height={120}
-          className="h-auto w-full"
+          className="h-auto w-full pointer-events-none"
         />
       </motion.div>
 
       {/* STAR — DESKTOP */}
-      <div
+      <motion.div
+        animate={{ y: [0, -6, 0] }}
+        whileHover={{
+          scale: 1.15,
+          rotate: 5,
+        }}
+        transition={{
+          y: {
+            duration: 4,
+            repeat: Infinity,
+            ease: "easeInOut",
+          },
+          scale: {
+            duration: 0.2,
+          },
+          rotate: {
+            duration: 0.2,
+          },
+        }}
         className="
           absolute bottom-[29%] left-[2%]
           z-20 w-[55px]
@@ -347,10 +452,28 @@ export default function Hero() {
             rotate-[-8deg]
           "
         />
-      </div>
+      </motion.div>
 
       {/* LAPTOP STICKER — DESKTOP */}
-      <div
+      <motion.div
+        animate={{ y: [0, -6, 0] }}
+        whileHover={{
+          scale: 1.15,
+          rotate: 5,
+        }}
+        transition={{
+          y: {
+            duration: 4,
+            repeat: Infinity,
+            ease: "easeInOut",
+          },
+          scale: {
+            duration: 0.2,
+          },
+          rotate: {
+            duration: 0.2,
+          },
+        }}
         className="
           absolute bottom-[10%] right-[25%]
           z-20 w-[65px]
@@ -365,7 +488,7 @@ export default function Hero() {
           height={150}
           className="h-auto w-full"
         />
-      </div>
+      </motion.div>
 
       {/* =====================================================
           MOBILE LAYOUT
@@ -396,6 +519,7 @@ export default function Hero() {
           filename="graduate.png"
           width="100%"
           priority
+          onClick={() => setActivePhotoIndex(0)}
         />
       </motion.div>
 
@@ -418,11 +542,12 @@ export default function Hero() {
         "
       >
         <PhotoFrame
-          src="/images/hero/me.jpeg"
+          src="/images/hero/me (2).jpeg"
           alt="Nadhira"
           filename="me.png"
           width="100%"
           priority
+          onClick={() => setActivePhotoIndex(1)}
         />
       </motion.div>
 
@@ -513,26 +638,18 @@ export default function Hero() {
           md:hidden
         "
       >
-        <span className="block">
-          intrested in building solutions through
-        </span>
+        <span className="block">intrested in building solutions through</span>
 
         <span className="block">
-          <TextHighlight>
-            data, AI, and web development
-          </TextHighlight>
+          <TextHighlight>data, AI, and web development</TextHighlight>
           {" and"}
         </span>
 
-        <span className="block">
-          enjoy turning complex problems into
-        </span>
+        <span className="block">enjoy turning complex problems into</span>
 
         <span className="block">
           <span className="relative inline-block">
-            <span className="relative z-10">
-              meaningful projects
-            </span>
+            <span className="relative z-10">meaningful projects</span>
 
             <span
               className="
@@ -683,6 +800,7 @@ export default function Hero() {
             src="/images/hero/painting.PNG"
             alt="Painting"
             filename="painting.jpg"
+            onClick={() => setActivePhotoIndex(3)}
           />
         </div>
 
@@ -700,6 +818,7 @@ export default function Hero() {
             src="/images/hero/jogja.jpg"
             alt="Yogyakarta"
             filename="jogja.jpg"
+            onClick={() => setActivePhotoIndex(4)}
           />
         </div>
 
@@ -714,9 +833,10 @@ export default function Hero() {
           "
         >
           <SmallPhotoFrame
-            src="/images/hero/hometown.jpg"
+            src="/images/hero/hometown (2).jpg"
             alt="Hometown"
             filename="hometown.jpg"
+            onClick={() => setActivePhotoIndex(5)}
           />
         </div>
       </div>
@@ -744,6 +864,7 @@ export default function Hero() {
           alt="Coffee and laptop"
           filename="coffee+laptop.png"
           width="100%"
+          onClick={() => setActivePhotoIndex(2)}
         />
       </motion.div>
 
@@ -769,6 +890,17 @@ export default function Hero() {
           className="h-auto w-full"
         />
       </div>
+      <AnimatePresence>
+        {activePhotoIndex !== null && (
+          <GalleryLightbox
+            key="hero-gallery-lightbox"
+            photos={photos}
+            activeIndex={activePhotoIndex}
+            onClose={closeLightbox}
+            onNavigate={navigateLightbox}
+          />
+        )}
+      </AnimatePresence>
     </section>
   );
 }

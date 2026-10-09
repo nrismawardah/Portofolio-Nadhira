@@ -1,4 +1,7 @@
+"use client";
+
 import Image from "next/image";
+import { motion } from "motion/react";
 
 type PhotoFrameProps = {
   src: string;
@@ -7,6 +10,7 @@ type PhotoFrameProps = {
   width?: number | string;
   priority?: boolean;
   className?: string;
+  onClick?: () => void;
 };
 
 export default function PhotoFrame({
@@ -16,20 +20,42 @@ export default function PhotoFrame({
   width = 320,
   priority = false,
   className = "",
+  onClick,
 }: PhotoFrameProps) {
   return (
-    <div
-      className={`overflow-hidden rounded-[14px] bg-white shadow-lg ${className}`}
-      style={{ width }}
+    <motion.div
+      role={onClick ? "button" : undefined}
+      tabIndex={onClick ? 0 : undefined}
+      onClick={onClick}
+      onKeyDown={(event) => {
+        if (onClick && (event.key === "Enter" || event.key === " ")) {
+          event.preventDefault();
+          onClick();
+        }
+      }}
+      whileHover={{
+        scale: 1.03,
+        y: -4,
+        transition: {
+          duration: 0.2,
+          ease: "easeOut",
+        },
+      }}
+      whileTap={{
+        scale: 0.98,
+      }}
+      transition={{ duration: 0.2 }}
+      className={`overflow-hidden rounded-[14px] bg-white shadow-lg ${
+        onClick ? "cursor-zoom-in" : ""
+      } ${className}`}
+      style={{ width, transformOrigin: "center" }}
     >
-      {/* Filename bar */}
       <div className="flex h-6 items-center bg-[#e5e5e5] px-2">
         <span className="truncate font-helvetica text-[9px] font-medium text-black">
           {filename}
         </span>
       </div>
 
-      {/* 4:5 image */}
       <div className="relative aspect-[4/5] w-full overflow-hidden">
         <Image
           src={src}
@@ -40,6 +66,6 @@ export default function PhotoFrame({
           className="object-cover"
         />
       </div>
-    </div>
+    </motion.div>
   );
 }
