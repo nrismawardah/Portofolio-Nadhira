@@ -1,6 +1,7 @@
 import Navbar from "@/components/navigation/Navbar";
 import Hero from "@/components/sections/Hero";
 import About from "@/components/sections/About";
+import Experience from "@/components/sections/Experience";
 
 export default function Home() {
   return (
@@ -10,13 +11,8 @@ export default function Home() {
       <main>
         <Hero />
         <About />
+        <Experience />
         {/* Temporary sections for navigation testing */}
-        <section
-          id="experience"
-          className="flex min-h-screen items-center justify-center bg-[#9ed8f5]"
-        >
-          <h2 className="font-condensed text-6xl sm:text-8xl">EXPERIENCE</h2>
-        </section>
 
         <section
           id="projects"
