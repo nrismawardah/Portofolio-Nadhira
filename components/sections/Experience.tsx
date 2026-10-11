@@ -27,6 +27,7 @@ type FolderPhoto = {
 type ExperienceFolder = {
   id: string;
   name: string;
+  year: string;
   photos: FolderPhoto[];
 };
 
@@ -57,95 +58,98 @@ const educationFolders: ExperienceFolder[] = [
   {
     id: "kmti",
     name: "KMTI",
+    year: "2022–2024",
     photos: [
       {
-        src: "/images/experience/umy.jpg",
-        alt: "UMY campus",
-        title: "My University Days",
+        src: "/images/experience/kmti.jpeg",
+        alt: "KMTI",
+        title: "KMTI",
         description:
-          "A little collection of memories from my university journey at Universitas Muhammadiyah Yogyakarta.",
+          "KMTI is a student organization for Information Technology UMY students to develop their skills, build connections, and make positive contributions.",
       },
       {
-        src: "/images/experience/capstone.jpeg",
-        alt: "Capstone memories",
-        title: "Capstone Memories",
+        src: "/images/experience/kmti1.jpeg",
+        alt: "KMTI",
+        title: "KMTI",
         description:
-          "Memories from university projects, teamwork, and the people I met along the way.",
+          "I joined the Arts, Culture, and Sports (SBO) division in 2022–2023, where I was responsible for one of the division's work programs.",
+      },
+      {
+        src: "/images/experience/kmti3.jpeg",
+        alt: "KMTI",
+        title: "KMTI",
+        description:
+          "In 2023–2024, I became the division's secretary, handling administrative tasks and helping ensure that all programs ran smoothly.",
       },
     ],
   },
   {
     id: "mataf",
     name: "Mataf",
+    year: "2023",
     photos: [
       {
-        src: "/images/experience/capstone.jpeg",
-        alt: "University activity",
+        src: "/images/experience/mataf.jpeg",
+        alt: "MATAF",
         title: "MATAF",
         description:
-          "Memories from university activities and the people I met along the way.",
+          "MATAF (Masa Ta'aruf) is an orientation program that introduces new students to campus life. In 2023, I joined the organizing committee at both the Faculty of Engineering and Information Technology levels.",
+      },
+      {
+        src: "/images/experience/mataf1.jpeg",
+        alt: "MATAF",
+        title: "MATAF",
+        description:
+          "At the faculty level, I was a group mentor, guiding and supporting new students throughout the program.",
+      },
+      {
+        src: "/images/experience/mataf3.jpeg",
+        alt: "MATAF",
+        title: "MATAF",
+        description:
+          "At the department level, I joined the KSK division, handling administrative records and documents for committee members and participants, while also serving as a group mentor.",
       },
     ],
   },
   {
     id: "itspecta",
     name: "IT-Specta",
+    year: "2024",
     photos: [
       {
-        src: "/images/experience/capstone.jpeg",
-        alt: "IT-Specta activity",
+        src: "/images/experience/it-specta.jpeg",
+        alt: "IT-Specta",
         title: "IT-Specta",
         description:
-          "A collection of moments from activities and events during my time at university.",
+          "IT-SPECTA is an annual event organized by UMY's Information Technology study program, featuring a national seminar as well as sports and e-sports competitions. In 2024, I joined the organizing committee as a member of the Health division, helping provide health support and handle medical emergencies during the event.",
       },
     ],
   },
   {
     id: "portek",
     name: "Portek",
+    year: "2023",
     photos: [
       {
-        src: "/images/experience/sidang.jpeg",
-        alt: "Academic presentation",
+        src: "/images/experience/portek.png",
+        alt: "PORTEK",
         title: "Portek",
         description:
-          "A few memories from my academic projects and university experience.",
-      },
-    ],
-  },
-];
-
-const experienceFolders: ExperienceFolder[] = [
-  {
-    id: "internship",
-    name: "Internship",
-    photos: [
-      {
-        src: "/images/experience/internship-certificate.png",
-        alt: "Internship certificate",
-        title: "Web Developer Intern",
-        description:
-          "Worked as a Web Developer Intern at Diskominfosan Kota Yogyakarta from November 2025 to January 2026.",
+          "PORTEK is an annual sports competition and celebration organized by BEM KMFT UMY. In 2023, I joined the organizing committee as a member of the First Aid division (P3K), helping maintain participants' well-being and respond to medical emergencies throughout the event.",
       },
       {
-        src: "/images/experience/umy.jpg",
-        alt: "Internship documentation",
-        title: "Internship Moments",
+        src: "/images/experience/portek1.jpeg",
+        alt: "PORTEK",
+        title: "Portek",
         description:
-          "Some memories from my internship journey, learning to collaborate and build useful applications.",
+          "In 2023, I joined the organizing committee as a member of the First Aid division (P3K), helping maintain participants' well-being and respond to medical emergencies throughout the event.",
       },
-    ],
-  },
-  {
-    id: "projects",
-    name: "Projects",
-    photos: [
       {
-        src: "/images/experience/capstone.jpeg",
-        alt: "Academic project",
-        title: "Academic Projects",
+        src: "/images/experience/portek2.jpeg",
+        alt: "PORTEK",
+        title: "Portek",
         description:
-          "Projects that helped me grow my technical skills and put what I learned into practice.",
+          "In 2023, I joined the organizing committee as a member of the First Aid division (P3K), helping maintain participants' well-being and respond to medical emergencies throughout the event.",
       },
     ],
   },
@@ -462,7 +466,7 @@ function ExperienceLightbox({
 
           <div className="flex w-full flex-col justify-center overflow-y-auto p-6 sm:p-8 md:w-[310px] md:shrink-0">
             <p className="text-xs uppercase tracking-[0.18em] text-neutral-400">
-              {folder.name}
+              {folder.year}
             </p>
 
             <h3 className="mt-2 text-2xl font-bold tracking-tight text-[#33351e] sm:text-3xl">
@@ -534,12 +538,79 @@ function ExperienceLightbox({
   );
 }
 
+function CertificateLightbox({
+  src,
+  onClose,
+}: {
+  src: string;
+  onClose: () => void;
+}) {
+  useEffect(() => {
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") onClose();
+    };
+
+    document.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      document.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [onClose]);
+
+  return (
+    <motion.div
+      className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/80 p-4 backdrop-blur-sm sm:p-8"
+      role="dialog"
+      aria-modal="true"
+      aria-label="Internship certificate"
+      onClick={onClose}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.2 }}
+    >
+      <button
+        type="button"
+        onClick={onClose}
+        aria-label="Close certificate"
+        className="absolute right-4 top-4 z-30 rounded-full bg-white/15 p-3 text-white transition hover:bg-white/30"
+      >
+        <X size={24} />
+      </button>
+
+      <motion.div
+        className="relative h-[85vh] w-full max-w-5xl"
+        onClick={(event) => event.stopPropagation()}
+        initial={{ opacity: 0, scale: 0.97 }}
+        animate={{ opacity: 1, scale: 1 }}
+        exit={{ opacity: 0, scale: 0.98 }}
+        transition={{ duration: 0.2 }}
+      >
+        <Image
+          src={src}
+          alt="Internship certificate"
+          fill
+          sizes="(max-width: 768px) 95vw, 80vw"
+          className="object-contain"
+          priority
+        />
+      </motion.div>
+    </motion.div>
+  );
+}
+
 export default function Experience() {
   const [activeFolder, setActiveFolder] = useState<ExperienceFolder | null>(
     null,
   );
 
   const [activePhotoIndex, setActivePhotoIndex] = useState<number | null>(null);
+
+  const [showCertificate, setShowCertificate] = useState(false);
 
   return (
     <section
@@ -788,7 +859,6 @@ export default function Experience() {
             {/* Internship certificate */}
             <motion.button
               type="button"
-              onClick={() => setActiveFolder(experienceFolders[0])}
               aria-label="Open internship certificate"
               className="group relative z-10 mx-auto w-[85%] text-left sm:w-[90%] lg:mx-0 lg:w-full"
               whileHover={{ y: -5, rotate: -1 }}
@@ -810,6 +880,7 @@ export default function Experience() {
                   fill
                   sizes="(max-width: 1024px) 70vw, 22vw"
                   className="object-contain"
+                  onClick={() => setShowCertificate(true)}
                 />
               </div>
 
@@ -821,7 +892,6 @@ export default function Experience() {
             {/* Coming soon */}
             <motion.button
               type="button"
-              onClick={() => setActiveFolder(experienceFolders[1])}
               aria-label="Open upcoming experience"
               className="group relative z-10 mx-auto mt-4 w-[85%] text-left sm:mt-6 sm:w-[90%] lg:mx-0 lg:mt-14 lg:w-full"
               whileHover={{ y: -5, rotate: 1 }}
@@ -834,6 +904,7 @@ export default function Experience() {
                 height={44}
                 className="pointer-events-none absolute w-7 -left-3 -top-4 z-20 -rotate-12 object-contain lg:w-[20%]"
                 aria-hidden="true"
+                onClick={() => setShowCertificate(true)}
               />
 
               <div className="relative aspect-[4/3] overflow-hidden bg-white/50 shadow-md transition-shadow duration-300 group-hover:shadow-xl" />
@@ -877,6 +948,17 @@ export default function Experience() {
             key={activeFolder.id}
             folder={activeFolder}
             onClose={() => setActiveFolder(null)}
+          />
+        )}
+      </AnimatePresence>
+
+      {/* CERTIFICATE LIGHTBOX */}
+      <AnimatePresence>
+        {showCertificate && (
+          <CertificateLightbox
+            key="certificate-lightbox"
+            src="/images/experience/internship-certificate.png"
+            onClose={() => setShowCertificate(false)}
           />
         )}
       </AnimatePresence>
