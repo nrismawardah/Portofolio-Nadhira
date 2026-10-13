@@ -34,6 +34,15 @@
   font-display: swap;
 }
 
+@font-face {
+  font-family: "Arial Nova Cond";
+  src: url("https://db.onlinewebfonts.com/t/e02bdd9828bed1e2490bdf94662dbba8.woff2")
+    format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
 :root {
   --blue: #9ed8f5;
   --blue-light: #dff3fc;
