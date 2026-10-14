@@ -12,6 +12,7 @@ import {
   Share,
   X,
 } from "lucide-react";
+import { createPortal } from "react-dom";
 
 type Obsession = {
   title: string;
@@ -119,7 +120,7 @@ export default function About() {
   return (
     <section
       id="about"
-      className="relative isolate min-h-screen overflow-hidden bg-cover bg-center px-5 py-16 sm:px-8 lg:px-12 lg:py-20"
+      className="relative isolate min-h-screen overflow-x-clip bg-cover bg-center px-5 py-10 sm:px-8 sm:py-12 md:h-dvh md:min-h-0 md:overflow-hidden md:px-6 md:py-5 lg:h-dvh lg:min-h-0 lg:overflow-hidden lg:px-6 lg:py-6 xl:px-10"
       style={{
         backgroundImage: "url('/images/about/background-about.png')",
       }}
@@ -127,10 +128,30 @@ export default function About() {
       <div className="absolute inset-0 -z-10 bg-pink-950/10" />
 
       {/* MAIN GRID */}
-      <div className="mx-auto grid w-full max-w-[1440px] grid-cols-2 items-start gap-x-3 gap-y-7 sm:gap-x-5 sm:gap-y-10 lg:grid-cols-12 lg:items-center lg:gap-0">
+      <div
+        className="
+    mx-auto grid w-full max-w-[1440px]
+    grid-cols-2 items-start gap-x-3 gap-y-7
+    sm:gap-x-5 sm:gap-y-10
+
+    md:h-full md:grid-cols-12 md:grid-rows-[auto_auto]
+    md:content-center md:items-start
+    md:gap-x-4 md:gap-y-5
+
+    lg:grid-rows-1 lg:content-normal
+    lg:items-center lg:gap-0
+  "
+      >
         {/* PHOTO BOOTH */}
         <motion.div
-          className="relative z-0 col-span-2 mx-auto w-full max-w-[680px] lg:col-span-6 lg:col-start-1 lg:row-start-1 lg:mx-0 lg:max-w-none"
+          className="
+  relative z-0 col-span-2 mx-auto w-full max-w-[680px]
+
+  md:col-span-8 md:col-start-1 md:row-start-1
+  md:mx-0 md:max-w-none
+
+  lg:col-span-6 lg:col-start-1 lg:row-start-1
+"
           initial={{ opacity: 0, y: 24, rotate: -1.5 }}
           whileInView={{ opacity: 1, y: 0, rotate: 0 }}
           viewport={{ once: true, amount: 0.2 }}
@@ -153,7 +174,7 @@ export default function About() {
             </div>
 
             {/* Portrait */}
-            <div className="relative aspect-[4/3] bg-[#d7c4ca] lg:aspect-[3/2]">
+            <div className="relative aspect-[4/3] bg-[#d7c4ca] md:aspect-[4/3] lg:aspect-[16/11]">
               <Image
                 src={portrait}
                 alt="A portrait of Nadhira"
@@ -162,11 +183,8 @@ export default function About() {
                 sizes="(max-width: 1024px) 94vw, 38vw"
                 className="object-cover object-center"
               />
-
               <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-pink-200/10 via-transparent to-black/10" />
             </div>
-
-            {/* Photo Booth controls */}
 
             {/* Photo Booth controls */}
             <div className="flex h-12 items-center justify-between border-t border-neutral-300 bg-gradient-to-b from-[#fafafa] to-[#e3e3e3] px-4">
@@ -193,7 +211,17 @@ export default function About() {
 
           {/* Location sticker */}
           <motion.div
-            className="relative mt-3 inline-flex max-w-full items-center rounded-full bg-[#f5f2f4] px-3 py-1.5 text-xs text-neutral-900 shadow-md sm:mt-6 sm:px-4 sm:py-2 sm:text-base lg:-ml-1 lg:mt-10 lg:px-5 lg:py-3 lg:text-xl"
+            className="
+  relative mt-3 inline-flex max-w-full items-center
+  rounded-full bg-[#f5f2f4] px-4 py-2
+  text-xs text-neutral-900 shadow-md
+
+  sm:mt-3 sm:px-4 sm:py-2 sm:text-base
+
+  md:mt-3 md:px-6 md:py-2 md:text-md
+
+  lg:-ml-1 lg:mt-4 lg:px-8 lg:py-2 lg:text-xl
+"
             whileHover={{ y: -3, rotate: -1 }}
             transition={{ duration: 0.2 }}
           >
@@ -217,7 +245,15 @@ export default function About() {
 
         {/* NOTES */}
         <motion.div
-          className="relative z-20 col-span-1 w-full min-w-0 lg:col-span-5 lg:col-start-4 lg:row-start-1 lg:mx-0 lg:mt-36 lg:max-w-none lg:translate-x-12"
+          className="
+  relative z-20 col-span-1 w-full min-w-0
+
+  md:col-span-7 md:col-start-6 md:row-start-1
+  md:ml-[-5%] md:mt-35 md:self-start
+
+  lg:col-span-5 lg:col-start-4 lg:ml-10
+  lg:mt-40 lg:translate-x-12
+"
           initial={{ opacity: 0, y: 28, rotate: 1 }}
           whileInView={{ opacity: 1, y: 0, rotate: 0 }}
           viewport={{ once: true, amount: 0.2 }}
@@ -225,7 +261,7 @@ export default function About() {
         >
           <div className="overflow-hidden rounded-[10px] bg-[#faf7f2] text-[#171717] shadow-[0_12px_30px_rgba(60,20,35,0.2)] sm:rounded-[14px] sm:shadow-[0_20px_55px_rgba(60,20,35,0.2)]">
             {/* Notes toolbar */}
-            <div className="flex h-9 items-center justify-between px-2 sm:h-[62px] sm:px-7">
+            <div className="flex h-9 items-center justify-between px-2 sm:h-[48px] sm:px-5 lg:h-[44px]">
               <div className="flex items-center gap-0.5 text-[#e9a51b] sm:gap-2">
                 <ChevronLeft
                   size={18}
@@ -234,7 +270,6 @@ export default function About() {
                 />
                 <span className="text-xs font-semibold sm:text-lg">Notes</span>
               </div>
-
               <div className="flex items-center gap-1.5 text-[#e9a51b] sm:gap-5">
                 <Share
                   size={15}
@@ -250,12 +285,11 @@ export default function About() {
             </div>
 
             {/* Notes content */}
-            <div className="px-3 pb-3 sm:px-6 sm:pb-7">
-              <h2 className="mb-2 text-[15px] font-bold leading-tight tracking-tight text-[#33351e] sm:mb-3 sm:text-[27px]">
+            <div className="px-3 pb-3 sm:px-5 sm:pb-5 md:px-3 md:pb-3 lg:px-5 lg:pb-4">
+              <h2 className="mb-2 text-[15px] font-bold leading-tight tracking-tight text-[#33351e] sm:mb-3 sm:text-[25px] md:mb-2 md:text-[18px] lg:text-[24px]">
                 Hi! I’m Nadhira
               </h2>
-
-              <div className="space-y-2 text-[10px] leading-[1.5] sm:space-y-4 sm:text-[17px] sm:leading-[1.6]">
+              <div className="space-y-2 text-[10px] leading-[1.5] sm:space-y-3 sm:text-[16px] sm:leading-[1.5] md:space-y-2 md:text-[11px] lg:text-[14px]">
                 <p>
                   I’m an Information Technology graduate with a focus on Data
                   Science, Artificial Intelligence, and Web Development. I love
@@ -273,24 +307,56 @@ export default function About() {
 
         {/* THINGS I'M OBSESSED WITH */}
         <motion.div
-          className="relative z-10 col-span-1 w-full min-w-0 lg:col-span-3 lg:col-start-10 lg:row-start-1 lg:pt-4"
+          className="
+  relative z-10 col-span-1 w-full min-w-0
+
+  md:col-span-12 md:col-start-1 md:row-start-2
+  md:pt-0
+
+  lg:col-span-3 lg:col-start-10 lg:row-start-1
+  lg:pt-4
+"
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.15 }}
           transition={{ duration: 0.65, delay: 0.2, ease: "easeOut" }}
         >
-          <h2 className="mb-3 text-center text-[11px] font-medium leading-tight tracking-tight text-white drop-shadow-[0_2px_5px_rgba(60,10,30,0.55)] sm:mb-7 sm:text-3xl lg:text-left lg:text-[20px]">
+          <h2
+            className="
+  mb-2 text-center text-[13px] font-medium leading-tight
+  tracking-tight text-white
+  drop-shadow-[0_2px_5px_rgba(60,10,30,0.55)]
+
+  sm:mb-4 sm:text-2xl
+
+  md:mb-3 md:text-center md:text-[23px]
+
+  lg:mb-3 lg:text-left lg:text-[20px]
+"
+          >
             (things i obsessed with...)
           </h2>
 
-          <div className="mx-auto grid w-full max-w-[250px] grid-cols-2 gap-1.5 sm:gap-4 lg:gap-3 xl:gap-4">
+          <div
+            className="
+  mx-auto grid w-full max-w-[250px]
+  grid-cols-2 gap-1.5
+
+  sm:gap-3
+
+  md:max-w-[560px] md:grid-cols-4 md:gap-3
+
+  lg:max-w-[220px] lg:grid-cols-2 lg:gap-2
+  xl:max-w-[220px] xl:gap-2.5
+"
+          >
             {obsessions.map((item, index) => (
               <motion.button
                 key={item.title}
                 type="button"
                 onClick={() => setActiveIndex(index)}
                 aria-label={`View ${item.title}: ${item.subtitle}`}
-                className="group relative aspect-square overflow-hidden rounded-[6px] border-[4px] border-[#ff6b96] bg-[#ffb8cd] shadow-[0_6px_14px_rgba(80,10,40,0.18)] outline-none transition-colors hover:border-[#ff477d] focus-visible:ring-4 focus-visible:ring-white sm:rounded-[10px] sm:border-[7px]"
+                className="group relative aspect-square overflow-hidden rounded-[6px] border-[4px] border-[#ff6b96] bg-[#ffb8cd] shadow-[0_6px_14px_rgba(80,10,40,0.18)] outline-none transition-colors hover:border-[#ff477d] focus-visible:ring-4 focus-visible:ring-white sm:rounded-[10px] sm:border-[7px] md:rounded-[7px] md:border-[4px] lg:rounded-[10px] lg:border-[7px]"
                 whileHover={{
                   y: -5,
                   rotate: index % 2 === 0 ? -2 : 2,
@@ -318,121 +384,125 @@ export default function About() {
       </div>
 
       {/* LIGHTBOX */}
-      <AnimatePresence>
-        {activeObsession && (
-          <motion.div
-            key="obsession-lightbox"
-            className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/80 p-4 backdrop-blur-sm sm:p-8"
-            role="dialog"
-            aria-modal="true"
-            aria-label={`${activeObsession.title} photo and description`}
-            onClick={closeLightbox}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.2 }}
-          >
-            <button
-              type="button"
-              onClick={closeLightbox}
-              aria-label="Close gallery"
-              className="absolute right-4 top-4 z-20 rounded-full bg-white/15 p-3 text-white transition hover:bg-white/30"
-            >
-              <X size={24} />
-            </button>
-
-            <button
-              type="button"
-              aria-label="Previous photo"
-              onClick={(event) => {
-                event.stopPropagation();
-                navigateLightbox(-1);
-              }}
-              className="absolute left-2 top-1/2 z-20 -translate-y-1/2 rounded-full bg-white/15 p-2 text-white transition hover:bg-white/30 sm:left-6 sm:p-3"
-            >
-              <ChevronLeft size={28} />
-            </button>
-
-            <AnimatePresence mode="wait">
+      {typeof document !== "undefined" &&
+        createPortal(
+          <AnimatePresence>
+            {activeObsession && (
               <motion.div
-                key={activeObsession.title}
-                className="relative z-10 flex max-h-[90vh] w-full max-w-4xl flex-col overflow-y-auto rounded-2xl bg-[#faf7f2] shadow-2xl md:flex-row md:overflow-hidden"
-                onClick={(event) => event.stopPropagation()}
-                initial={{ opacity: 0, scale: 0.97, y: 10 }}
-                animate={{ opacity: 1, scale: 1, y: 0 }}
-                exit={{ opacity: 0, scale: 0.98, y: -5 }}
-                transition={{ duration: 0.2, ease: "easeOut" }}
+                key="obsession-lightbox"
+                className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/80 p-4 backdrop-blur-sm sm:p-8"
+                role="dialog"
+                aria-modal="true"
+                aria-label={`${activeObsession.title} photo and description`}
+                onClick={closeLightbox}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.2 }}
               >
-                <div className="relative min-h-[240px] flex-1 md:min-h-[480px]">
-                  <Image
-                    src={activeObsession.src}
-                    alt={activeObsession.title}
-                    fill
-                    sizes="(max-width: 768px) 90vw, 55vw"
-                    className="object-contain"
-                    priority
-                  />
-                </div>
+                <button
+                  type="button"
+                  onClick={closeLightbox}
+                  aria-label="Close gallery"
+                  className="absolute right-4 top-4 z-20 rounded-full bg-white/15 p-3 text-white transition hover:bg-white/30"
+                >
+                  <X size={24} />
+                </button>
 
-                <div className="flex w-full flex-col justify-center p-6 sm:p-8 md:w-[310px] md:shrink-0">
-                  <h3 className="text-3xl font-bold tracking-tight text-[#33351e]">
-                    {activeObsession.title}
-                  </h3>
+                <button
+                  type="button"
+                  aria-label="Previous photo"
+                  onClick={(event) => {
+                    event.stopPropagation();
+                    navigateLightbox(-1);
+                  }}
+                  className="absolute left-2 top-1/2 z-20 -translate-y-1/2 rounded-full bg-white/15 p-2 text-white transition hover:bg-white/30 sm:left-6 sm:p-3"
+                >
+                  <ChevronLeft size={28} />
+                </button>
 
-                  <p className="mt-2 text-sm text-neutral-500">
-                    {activeObsession.subtitle}
-                  </p>
-
-                  <div className="my-5 h-px w-full bg-[#eadedb]" />
-
-                  <p className="text-[15px] leading-7 text-neutral-700">
-                    {activeObsession.description}
-                  </p>
-
-                  <div className="mt-7 flex items-center justify-between">
-                    <span className="text-xs text-neutral-500">
-                      {String(activeIndex! + 1).padStart(2, "0")} /{" "}
-                      {String(obsessions.length).padStart(2, "0")}
-                    </span>
-
-                    <div className="flex gap-2">
-                      <button
-                        type="button"
-                        aria-label="Previous photo"
-                        onClick={() => navigateLightbox(-1)}
-                        className="rounded-full border border-[#e6d7d4] p-2 transition hover:bg-[#f0e6e3]"
-                      >
-                        <ChevronLeft size={19} />
-                      </button>
-
-                      <button
-                        type="button"
-                        aria-label="Next photo"
-                        onClick={() => navigateLightbox(1)}
-                        className="rounded-full border border-[#e6d7d4] p-2 transition hover:bg-[#f0e6e3]"
-                      >
-                        <ChevronRight size={19} />
-                      </button>
+                <AnimatePresence mode="wait">
+                  <motion.div
+                    key={activeObsession.title}
+                    className="relative z-10 flex max-h-[90vh] w-full max-w-4xl flex-col overflow-y-auto rounded-2xl bg-[#faf7f2] shadow-2xl md:flex-row md:overflow-hidden"
+                    onClick={(event) => event.stopPropagation()}
+                    initial={{ opacity: 0, scale: 0.97, y: 10 }}
+                    animate={{ opacity: 1, scale: 1, y: 0 }}
+                    exit={{ opacity: 0, scale: 0.98, y: -5 }}
+                    transition={{ duration: 0.2, ease: "easeOut" }}
+                  >
+                    <div className="relative min-h-[240px] flex-1 md:min-h-[480px]">
+                      <Image
+                        src={activeObsession.src}
+                        alt={activeObsession.title}
+                        fill
+                        sizes="(max-width: 768px) 90vw, 55vw"
+                        className="object-contain"
+                        priority
+                      />
                     </div>
-                  </div>
-                </div>
-              </motion.div>
-            </AnimatePresence>
 
-            <button
-              type="button"
-              aria-label="Next photo"
-              onClick={(event) => {
-                event.stopPropagation();
-                navigateLightbox(1);
-              }}
-              className="absolute right-2 top-1/2 z-20 -translate-y-1/2 rounded-full bg-white/15 p-2 text-white transition hover:bg-white/30 sm:right-6 sm:p-3"
-            >
-              <ChevronRight size={28} />
-            </button>
-          </motion.div>
+                    <div className="flex w-full flex-col justify-center p-6 sm:p-8 md:w-[310px] md:shrink-0">
+                      <h3 className="text-3xl font-bold tracking-tight text-[#33351e]">
+                        {activeObsession.title}
+                      </h3>
+
+                      <p className="mt-2 text-sm text-neutral-500">
+                        {activeObsession.subtitle}
+                      </p>
+
+                      <div className="my-5 h-px w-full bg-[#eadedb]" />
+
+                      <p className="text-[15px] leading-7 text-neutral-700">
+                        {activeObsession.description}
+                      </p>
+
+                      <div className="mt-7 flex items-center justify-between">
+                        <span className="text-xs text-neutral-500">
+                          {String(activeIndex! + 1).padStart(2, "0")} /{" "}
+                          {String(obsessions.length).padStart(2, "0")}
+                        </span>
+
+                        <div className="flex gap-2">
+                          <button
+                            type="button"
+                            aria-label="Previous photo"
+                            onClick={() => navigateLightbox(-1)}
+                            className="rounded-full border border-[#e6d7d4] p-2 transition hover:bg-[#f0e6e3]"
+                          >
+                            <ChevronLeft size={19} />
+                          </button>
+
+                          <button
+                            type="button"
+                            aria-label="Next photo"
+                            onClick={() => navigateLightbox(1)}
+                            className="rounded-full border border-[#e6d7d4] p-2 transition hover:bg-[#f0e6e3]"
+                          >
+                            <ChevronRight size={19} />
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </motion.div>
+                </AnimatePresence>
+
+                <button
+                  type="button"
+                  aria-label="Next photo"
+                  onClick={(event) => {
+                    event.stopPropagation();
+                    navigateLightbox(1);
+                  }}
+                  className="absolute right-2 top-1/2 z-20 -translate-y-1/2 rounded-full bg-white/15 p-2 text-white transition hover:bg-white/30 sm:right-6 sm:p-3"
+                >
+                  <ChevronRight size={28} />
+                </button>
+              </motion.div>
+            )}
+          </AnimatePresence>,
+          document.body,
         )}
-      </AnimatePresence>
     </section>
   );
 }

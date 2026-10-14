@@ -78,8 +78,7 @@ export default function Hero() {
         transition={{ duration: 0.7 }}
         className="
           absolute left-[3%] top-[13%] z-20
-          max-md:hidden
-        "
+max-[1023px]:hidden        "
       >
         <PhotoFrame
           src="/images/hero/graduate.jpeg"
@@ -98,7 +97,7 @@ export default function Hero() {
         transition={{ duration: 0.7, delay: 0.1 }}
         className="
           absolute right-[15%] top-[15%] z-20
-          max-md:hidden
+          max-[1023px]:hidden
         "
       >
         <PhotoFrame
@@ -118,7 +117,7 @@ export default function Hero() {
     absolute inset-0 z-20
     flex items-center justify-center
     px-6
-    max-md:hidden
+    max-[1023px]:hidden
   "
       >
         <div className="mt-[5%] flex w-full max-w-[900px] flex-col items-center text-center">
@@ -225,7 +224,7 @@ export default function Hero() {
         transition={{ duration: 0.7, delay: 0.3 }}
         className="
           absolute bottom-[4%] right-[2%] z-20
-          max-md:hidden
+          max-[1023px]:hidden
         "
       >
         <PhotoFrame
@@ -242,7 +241,7 @@ export default function Hero() {
         className="
           absolute bottom-[3%] left-[5%] z-10
           w-[9%] max-w-[140px]
-          max-md:hidden
+          max-[1023px]:hidden
         "
       >
         <div
@@ -266,7 +265,7 @@ export default function Hero() {
         className="
           absolute bottom-[1%] left-[12%] z-10
           w-[8%] max-w-[125px]
-          max-md:hidden
+          max-[1023px]:hidden
         "
       >
         <div
@@ -290,7 +289,7 @@ export default function Hero() {
         className="
           absolute bottom-[20%] left-[18%] z-10
           w-[8%] max-w-[125px]
-          max-md:hidden
+          max-[1023px]:hidden
         "
       >
         <div
@@ -329,7 +328,7 @@ export default function Hero() {
             duration: 0.2,
           },
         }}
-        className="absolute left-[23%] top-[28%] z-50 w-[65px] rotate-[-8deg] max-md:hidden"
+        className="absolute left-[23%] top-[28%] z-50 w-[65px] rotate-[-8deg] max-[1023px]:hidden"
       >
         <Image
           src="/stickers/headphone.png"
@@ -365,7 +364,7 @@ export default function Hero() {
           absolute right-[2%] top-[17%]
           z-20 w-[65px]
           rotate-[-8deg]
-          max-md:hidden
+          max-[1023px]:hidden
         "
       >
         <Image
@@ -403,7 +402,7 @@ export default function Hero() {
         className="
           absolute right-[34%] top-[21%]
           z-50 w-[55px]
-          max-md:hidden
+          max-[1023px]:hidden
         "
       >
         <Image
@@ -439,7 +438,7 @@ export default function Hero() {
         className="
           absolute bottom-[29%] left-[2%]
           z-20 w-[55px]
-          max-md:hidden
+          max-[1023px]:hidden
         "
       >
         <Image
@@ -478,7 +477,7 @@ export default function Hero() {
           absolute bottom-[10%] right-[25%]
           z-20 w-[65px]
           rotate-[-10deg]
-          max-md:hidden
+          max-[1023px]:hidden
         "
       >
         <Image
@@ -510,7 +509,7 @@ export default function Hero() {
   w-[24vw]
   max-w-[105px]
   min-w-[82px]
-  md:hidden
+  min-[768px]:hidden
 "
       >
         <PhotoFrame
@@ -538,7 +537,7 @@ export default function Hero() {
           w-[20vw]
           max-w-[92px]
           min-w-[75px]
-          md:hidden
+          min-[768px]:hidden
         "
       >
         <PhotoFrame
@@ -563,7 +562,7 @@ export default function Hero() {
           w-[92%]
           -translate-x-1/2
           text-center
-          md:hidden
+          min-[768px]:hidden
         "
       >
         {/* NADHIRA */}
@@ -635,7 +634,7 @@ export default function Hero() {
           font-helvetica
           text-[clamp(0.75rem,3.2vw,1rem)]
           leading-[1.45]
-          md:hidden
+          min-[768px]:hidden
         "
       >
         <span className="block">intrested in building solutions through</span>
@@ -685,7 +684,7 @@ export default function Hero() {
           z-30
           w-[38px]
           rotate-[-8deg]
-          md:hidden
+          min-[768px]:hidden
         "
       >
         <Image
@@ -708,7 +707,7 @@ export default function Hero() {
           z-30
           w-[42px]
           rotate-[2deg]
-          md:hidden
+          min-[768px]:hidden
         "
       >
         <Image
@@ -737,7 +736,7 @@ export default function Hero() {
           z-30
           w-[32px]
           rotate-[3deg]
-          md:hidden
+          min-[768px]:hidden
         "
       >
         <Image
@@ -760,7 +759,7 @@ export default function Hero() {
           z-30
           w-[30px]
           rotate-[-8deg]
-          md:hidden
+          min-[768px]:hidden
         "
       >
         <Image
@@ -778,12 +777,12 @@ export default function Hero() {
       <div
         className="
           absolute
-          bottom-[15%]
+          bottom-[17%]
           left-[8%]
           z-20
           h-[25%]
           w-[42%]
-          md:hidden
+          min-[768px]:hidden
         "
       >
         {/* PAINTING */}
@@ -856,7 +855,7 @@ export default function Hero() {
           w-[23vw]
           max-w-[100px]
           min-w-[82px]
-          md:hidden
+          min-[768px]:hidden
         "
       >
         <PhotoFrame
@@ -879,7 +878,7 @@ export default function Hero() {
           z-30
           w-[35px]
           rotate-[-10deg]
-          md:hidden
+          min-[768px]:hidden
         "
       >
         <Image
@@ -890,6 +889,210 @@ export default function Hero() {
           className="h-auto w-full"
         />
       </div>
+
+      {/* =====================================================
+    TABLET LAYOUT — 768px to 1023px
+====================================================== */}
+
+      {/* TABLET — GRADUATION */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.7 }}
+        className="absolute left-[8%] top-[17%] z-20 hidden min-[768px]:block min-[1024px]:hidden"
+      >
+        <PhotoFrame
+          src="/images/hero/graduate.jpeg"
+          alt="Nadhira at graduation"
+          filename="graduate.png"
+          width="clamp(140px, 23vw, 210px)"
+          priority
+          onClick={() => setActivePhotoIndex(0)}
+        />
+      </motion.div>
+
+      {/* TABLET — ME */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.7, delay: 0.1 }}
+        className="absolute right-[12%] top-[22%] z-20 hidden min-[768px]:block min-[1024px]:hidden"
+      >
+        <PhotoFrame
+          src="/images/hero/me (2).jpeg"
+          alt="Nadhira"
+          filename="me.png"
+          width="clamp(125px, 19vw, 185px)"
+          priority
+          onClick={() => setActivePhotoIndex(1)}
+        />
+      </motion.div>
+
+      {/* TABLET — CENTER CONTENT */}
+      <div className="pointer-events-none absolute inset-0 z-20 hidden items-center justify-center px-4 min-[768px]:flex min-[1024px]:hidden">
+        <div className="mt-[3%] flex w-full max-w-[680px] flex-col items-center text-center">
+          {" "}
+          <motion.h1
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="font-helvetica text-[clamp(3.5rem,8vw,5.5rem)] font-normal leading-[0.8] tracking-[-0.07em]"
+          >
+            Nadhira
+          </motion.h1>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.1 }}
+            className="relative -mt-1"
+          >
+            <span className="absolute inset-x-[-2%] top-[48%] z-0 h-[45%] -rotate-1 bg-[#ffe44f]" />
+            <span className="relative z-10 whitespace-nowrap font-condensed text-[clamp(2.8rem,7vw,5rem)] italic leading-none">
+              Rismawardah
+            </span>
+          </motion.div>
+          <motion.p
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.3 }}
+            className="mt-8 text-center font-helvetica text-sm leading-[1.45] min-[900px]:text-base"
+          >
+            <span className="block">
+              intrested in building solutions through
+            </span>
+            <span className="block">
+              <TextHighlight>data, AI, and web development</TextHighlight>
+              {" and"}
+            </span>
+            <span className="block">enjoy turning complex problems into</span>
+            <span className="block">
+              <span className="relative inline-block">
+                <span className="relative z-10">meaningful projects</span>
+                <span className="absolute bottom-[-3px] left-0 z-0 h-[2px] w-full border-b-2 border-dashed border-[#e54848]" />
+              </span>
+            </span>
+          </motion.p>
+        </div>
+      </div>
+
+      {/* TABLET — COFFEE + LAPTOP */}
+      <motion.div
+        initial={{ opacity: 0, x: 20 }}
+        animate={{ opacity: 1, x: 0 }}
+        transition={{ duration: 0.7, delay: 0.3 }}
+        className="absolute bottom-[15%] right-[7%] z-20 hidden min-[768px]:block min-[1024px]:hidden"
+      >
+        <PhotoFrame
+          src="/images/hero/coffee+laptop.PNG"
+          alt="Coffee and laptop"
+          filename="coffee+laptop.png"
+          width="clamp(155px, 24vw, 220px)"
+          onClick={() => setActivePhotoIndex(2)}
+        />
+      </motion.div>
+
+      {/* TABLET — PAINTING */}
+      <div className="absolute bottom-[15%] left-[12%] z-10 hidden w-[95px] rotate-[-5deg] min-[768px]:block min-[1024px]:hidden">
+        <SmallPhotoFrame
+          src="/images/hero/painting.PNG"
+          alt="Painting"
+          filename="painting.jpg"
+          onClick={() => setActivePhotoIndex(3)}
+        />
+      </div>
+
+      {/* TABLET — JOGJA */}
+      <div className="absolute bottom-[10%] left-[22%] z-10 hidden w-[90px] rotate-[3deg] min-[768px]:block min-[1024px]:hidden">
+        <SmallPhotoFrame
+          src="/images/hero/jogja.jpg"
+          alt="Yogyakarta"
+          filename="jogja.jpg"
+          onClick={() => setActivePhotoIndex(4)}
+        />
+      </div>
+
+      {/* TABLET — HOMETOWN */}
+      <div className="absolute bottom-[22%] left-[29%] z-10 hidden w-[90px] rotate-[1deg] min-[768px]:block min-[1024px]:hidden">
+        <SmallPhotoFrame
+          src="/images/hero/hometown (2).jpg"
+          alt="Hometown"
+          filename="hometown.jpg"
+          onClick={() => setActivePhotoIndex(5)}
+        />
+      </div>
+
+      {/* TABLET — HEADPHONES */}
+      <motion.div
+        animate={{ y: [0, -6, 0] }}
+        transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute left-[28%] top-[28%] z-30 hidden w-[45px] rotate-[-8deg] min-[768px]:block min-[1024px]:hidden"
+      >
+        <Image
+          src="/stickers/headphone.png"
+          alt=""
+          aria-hidden="true"
+          width={100}
+          height={100}
+          className="pointer-events-none h-auto w-full"
+        />
+      </motion.div>
+
+      {/* TABLET — EYES */}
+      <div className="absolute right-[8%] top-[25%] z-30 hidden w-[45px] rotate-[-8deg] min-[768px]:block min-[1024px]:hidden">
+        <Image
+          src="/stickers/eyes.png"
+          alt=""
+          aria-hidden="true"
+          width={100}
+          height={100}
+          className="pointer-events-none h-auto w-full"
+        />
+      </div>
+
+      {/* TABLET — SPARKLES */}
+      <motion.div
+        animate={{ y: [0, -6, 0] }}
+        transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute right-[33%] top-[20%] z-30 hidden w-[38px] min-[768px]:block min-[1024px]:hidden"
+      >
+        <Image
+          src="/stickers/sparkles.png"
+          alt=""
+          aria-hidden="true"
+          width={100}
+          height={100}
+          className="pointer-events-none h-auto w-full"
+        />
+      </motion.div>
+
+      {/* TABLET — STAR */}
+      <div className="absolute bottom-[27%] left-[8%] z-20 hidden w-[38px] rotate-[-8deg] min-[768px]:block min-[1024px]:hidden">
+        <Image
+          src="/stickers/star.png"
+          alt=""
+          aria-hidden="true"
+          width={100}
+          height={100}
+          className="h-auto w-full"
+        />
+      </div>
+
+      {/* TABLET — LAPTOP STICKER */}
+      <motion.div
+        animate={{ y: [0, -6, 0] }}
+        transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+        className="absolute bottom-[15%] right-[28%] z-20 hidden w-[45px] rotate-[-10deg] min-[768px]:block min-[1024px]:hidden"
+      >
+        <Image
+          src="/stickers/laptop.png"
+          alt=""
+          aria-hidden="true"
+          width={100}
+          height={100}
+          className="pointer-events-none h-auto w-full"
+        />
+      </motion.div>
+
       <AnimatePresence>
         {activePhotoIndex !== null && (
           <GalleryLightbox

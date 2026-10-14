@@ -26,7 +26,7 @@ export default function Contact() {
   return (
     <section
       id="contact"
-      className="relative min-h-[360px] overflow-hidden bg-[#8acd01] px-5 pb-7 pt-12 text-black sm:min-h-[440px] sm:px-10 sm:pb-8 sm:pt-14 lg:min-h-[500px] lg:px-[18.5%] lg:pb-8 lg:pt-12"
+      className="relative min-h-[360px] overflow-hidden bg-[#8acd01] px-5 pb-7 pt-10 text-black sm:min-h-[440px] sm:px-10 sm:py-10 lg:flex lg:h-dvh lg:min-h-0 lg:flex-col lg:justify-center lg:px-[12%] lg:pb-20 lg:pt-8"
     >
       {/* Main typography */}
       <motion.div
@@ -34,7 +34,7 @@ export default function Contact() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.7 }}
-        className="font-['Arial_Nova_Cond'] text-[clamp(2.8rem,8.5vw,6rem)] leading-[1.2] tracking-[-0.035em]"
+        className="mx-auto w-fit max-w-full font-['Arial_Nova_Cond'] text-[clamp(3.2rem,8vw,7.5rem)] leading-[1.08] tracking-[-0.035em] lg:max-w-[900px] lg:text-[clamp(5rem,7.5vw,7.5rem)]"
       >
         <div className="flex items-start justify-between">
           <span>thanks</span>
@@ -56,7 +56,7 @@ export default function Contact() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.7, delay: 0.15 }}
-        className="mt-10 flex flex-wrap items-center justify-between gap-x-6 gap-y-3 text-xs sm:mt-16 sm:text-sm lg:absolute lg:bottom-7 lg:left-[5.8%] lg:right-[5.8%] lg:mt-0 lg:flex-nowrap lg:gap-4 lg:text-base"
+        className="mt-10 flex flex-wrap items-center justify-center gap-x-4 gap-y-3 text-xs sm:mt-16 sm:text-sm lg:absolute lg:bottom-7 lg:left-[5.8%] lg:right-[5.8%] lg:mt-0 lg:flex-nowrap lg:gap-x-8 lg:text-base"
       >
         {contactLinks.map(({ label, href, icon: Icon }) => (
           <a

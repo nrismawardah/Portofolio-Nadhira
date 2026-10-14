@@ -7,8 +7,7 @@ const navItems = [
   { label: "about me", id: "about" },
   { label: "experience", id: "experience" },
   { label: "projects", id: "projects" },
-  { label: "skills & tools", id: "skills" },
-  { label: "certifications", id: "certifications" },
+  { label: "skills & certs", id: "skills" },
   { label: "contact", id: "contact" },
 ];
 
@@ -25,10 +24,7 @@ export default function Navbar() {
       (entries) => {
         const visibleSection = entries
           .filter((entry) => entry.isIntersecting)
-          .sort(
-            (a, b) =>
-              b.intersectionRatio - a.intersectionRatio
-          )[0];
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
 
         if (visibleSection) {
           setActiveSection(visibleSection.target.id);
@@ -37,7 +33,7 @@ export default function Navbar() {
       {
         threshold: [0.2, 0.5, 0.75],
         rootMargin: "-20% 0px -50% 0px",
-      }
+      },
     );
 
     sections.forEach((section) => {
@@ -96,9 +92,7 @@ export default function Navbar() {
           aria-expanded={menuOpen}
           className="flex h-11 w-11 items-center justify-center rounded-full border border-black/10 bg-black/10 text-white shadow-sm backdrop-blur-md transition-transform hover:scale-105"
         >
-          <span className="text-lg leading-none">
-            {menuOpen ? "×" : "☰"}
-          </span>
+          <span className="text-lg leading-none">{menuOpen ? "×" : "☰"}</span>
         </button>
       </div>
 

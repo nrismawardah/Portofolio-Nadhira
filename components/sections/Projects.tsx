@@ -10,6 +10,7 @@ import {
   Code2,
   X,
 } from "lucide-react";
+import { createPortal } from "react-dom";
 
 type Project = {
   id: string;
@@ -463,7 +464,7 @@ export default function Projects() {
   return (
     <section
       id="projects"
-      className="relative isolate min-h-[760px] overflow-hidden bg-cover bg-center bg-no-repeat px-5 py-16 sm:px-8 sm:py-20 lg:h-[760px] lg:min-h-[760px] lg:px-12 lg:py-24"
+      className="relative isolate flex min-h-screen flex-col justify-center overflow-hidden bg-cover bg-center bg-no-repeat px-4 py-8 sm:px-8 sm:py-12 lg:h-dvh lg:min-h-0 lg:px-8 lg:py-8 xl:px-12"
       style={{
         backgroundImage: "url('/images/projects/background-projects.png')",
       }}
@@ -477,7 +478,7 @@ export default function Projects() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.4 }}
-        className="mx-auto mb-7 flex max-w-[1080px] justify-end sm:mb-9 lg:mb-10"
+        className="mx-auto mb-4 flex w-full max-w-[1080px] justify-end sm:mb-5 lg:mb-5"
       >
         <motion.div
           whileHover={{
@@ -487,7 +488,7 @@ export default function Projects() {
           }}
           whileTap={{ scale: 0.98 }}
           transition={{ duration: 0.2, ease: "easeOut" }}
-          className="relative cursor-default rounded-[26px] bg-[#168bfa] px-4 py-2.5 text-center text-base text-white shadow-md sm:px-6 sm:py-3 sm:text-xl"
+          className="relative cursor-default rounded-[26px] bg-[#168bfa] px-4 py-2 text-center text-sm text-white shadow-md sm:px-5 sm:py-2.5 sm:text-lg lg:text-base xl:text-lg"
         >
           These are my selected projects!
           <span className="absolute -bottom-2 right-3 h-0 w-0 border-l-[13px] border-t-[15px] border-l-transparent border-t-[#168bfa]" />
@@ -496,43 +497,43 @@ export default function Projects() {
 
       {/* Project cards */}
       <div className="relative mx-auto w-full max-w-[1080px]">
-        {/* Mobile: horizontal carousel, 2 cards visible */}
-        <div className="flex snap-x snap-mandatory gap-3 overflow-x-auto pb-3 sm:hidden">
-          {visibleProjects.map((project, index) => (
+        {/* Mobile: 2 rows, 1 column */}
+        <div className="grid grid-cols-1 gap-4 sm:hidden">
+          {visibleProjects.slice(0, 2).map((project, index) => (
             <motion.button
               key={project.id}
               type="button"
               onClick={() => setActiveProject(project)}
               aria-label={`View details for ${project.title}`}
-              className="group flex w-[calc((100%-0.75rem)/2)] shrink-0 snap-start flex-col self-stretch overflow-hidden rounded-md bg-[#dedbdd] text-left text-black shadow-[0_8px_20px_rgba(0,0,0,0.18)]"
+              className="group grid h-[240px] w-full grid-cols-[42%_1fr] overflow-hidden rounded-md bg-[#dedbdd] text-left text-black shadow-[0_8px_20px_rgba(0,0,0,0.18)]"
               initial={{ opacity: 0, y: 12 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.15 }}
               transition={{ duration: 0.35, delay: index * 0.05 }}
               whileTap={{ scale: 0.98 }}
             >
-              <div className="flex min-h-[52px] items-center px-2 py-2">
-                <h3 className="text-xs font-bold leading-tight">
-                  {project.title}
-                </h3>
-              </div>
-
-              <div className="relative aspect-[4/3] w-full overflow-hidden bg-neutral-800">
+              {/* Project screenshot */}
+              <div className="relative min-h-[150px] overflow-hidden bg-white">
                 <Image
                   src={project.images[0]}
                   alt={`${project.title} preview`}
                   fill
-                  sizes="45vw"
-                  className="object-cover object-top transition-transform duration-300 group-active:scale-[1.025]"
+                  sizes="42vw"
+                  className="object-contain p-1"
                 />
               </div>
 
-              <div className="flex flex-1 flex-col p-2">
-                <p className="text-xs leading-snug tracking-tight">
+              {/* Project information */}
+              <div className="flex min-w-0 flex-col p-3">
+                <h3 className="text-sm font-bold leading-tight">
+                  {project.title}
+                </h3>
+
+                <p className="mt-2 text-xs leading-snug tracking-tight">
                   {project.description}
                 </p>
 
-                <div className="mt-auto flex flex-wrap gap-1 pt-3">
+                <div className="mt-3 flex flex-wrap gap-1">
                   {project.technologies.slice(0, 5).map((technology) => (
                     <span
                       key={technology}
@@ -547,15 +548,67 @@ export default function Projects() {
           ))}
         </div>
 
-        {/* Tablet and desktop: preserve the existing grid */}
-        <div className="hidden items-stretch gap-5 sm:grid sm:grid-cols-2 lg:grid-cols-3 lg:gap-5">
+        {/* Tablet: 4 cards in 2 columns */}
+        <div className="hidden items-stretch gap-4 sm:grid sm:grid-cols-2 lg:hidden">
+          {visibleProjects.slice(0, 4).map((project, index) => (
+            <motion.button
+              key={project.id}
+              type="button"
+              onClick={() => setActiveProject(project)}
+              aria-label={`View details for ${project.title}`}
+              className="group flex h-[360px] min-h-0 min-w-0 flex-col overflow-hidden rounded-md bg-[#dedbdd] text-left text-black shadow-[0_8px_20px_rgba(0,0,0,0.18)] transition-shadow hover:shadow-[0_12px_28px_rgba(0,0,0,0.25)]"
+              initial={{ opacity: 0, y: 18 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.15 }}
+              transition={{ duration: 0.45, delay: index * 0.08 }}
+              whileHover={{ y: -5 }}
+              whileTap={{ scale: 0.99 }}
+            >
+              <div className="flex min-h-[44px] items-center px-3 py-2">
+                <h3 className="text-sm font-bold leading-tight">
+                  {project.title}
+                </h3>
+              </div>
+
+              <div className="relative aspect-[16/8] w-full shrink-0 overflow-hidden bg-neutral-800">
+                <Image
+                  src={project.images[0]}
+                  alt={`${project.title} preview`}
+                  fill
+                  sizes="45vw"
+                  className="object-cover object-top transition-transform duration-300 group-hover:scale-[1.025]"
+                />
+              </div>
+
+              <div className="flex flex-1 flex-col p-3">
+                <p className="text-xs leading-snug tracking-tight">
+                  {project.description}
+                </p>
+
+                <div className="mt-auto flex flex-wrap gap-1 pt-1">
+                  {project.technologies.slice(0, 5).map((technology) => (
+                    <span
+                      key={technology}
+                      className="rounded-full border border-black/80 bg-white px-2.5 py-1 text-[11px] leading-tight"
+                    >
+                      {technology}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </motion.button>
+          ))}
+        </div>
+
+        {/* Desktop: 3 cards in one row */}
+        <div className="hidden items-stretch gap-4 lg:grid lg:grid-cols-3 lg:gap-4">
           {visibleProjects.slice(0, 3).map((project, index) => (
             <motion.button
               key={project.id}
               type="button"
               onClick={() => setActiveProject(project)}
               aria-label={`View details for ${project.title}`}
-              className="group flex h-full min-h-[435px] min-w-0 flex-col overflow-hidden rounded-md bg-[#dedbdd] text-left text-black shadow-[0_8px_20px_rgba(0,0,0,0.18)] transition-shadow hover:shadow-[0_12px_28px_rgba(0,0,0,0.25)]"
+              className="group flex h-[380px] min-h-0 min-w-0 flex-col overflow-hidden rounded-md bg-[#dedbdd] text-left text-black shadow-[0_8px_20px_rgba(0,0,0,0.18)] transition-shadow hover:shadow-[0_12px_28px_rgba(0,0,0,0.25)]"
               initial={{ opacity: 0, y: 18 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.15 }}
@@ -569,7 +622,7 @@ export default function Projects() {
                 </h3>
               </div>
 
-              <div className="relative aspect-[16/10] w-full overflow-hidden bg-neutral-800">
+              <div className="relative aspect-[16/8] w-full shrink-0 overflow-hidden bg-neutral-800">
                 <Image
                   src={project.images[0]}
                   alt={`${project.title} preview`}
@@ -580,11 +633,11 @@ export default function Projects() {
               </div>
 
               <div className="flex flex-1 flex-col p-3">
-                <p className="text-[13px] leading-snug tracking-tight sm:text-sm">
+                <p className="text-xs leading-snug tracking-tight xl:text-[13px]">
                   {project.description}
                 </p>
 
-                <div className="mt-auto flex flex-wrap gap-1.5 pt-3">
+                <div className="mt-auto flex flex-wrap gap-1 pt-1">
                   {project.technologies.slice(0, 5).map((technology) => (
                     <span
                       key={technology}
@@ -601,7 +654,8 @@ export default function Projects() {
       </div>
 
       {/* Carousel controls */}
-      <div className="mt-4 flex items-center justify-center gap-4 sm:mt-8 lg:mt-5 lg:justify-between">
+      <div className="mt-3 flex items-center justify-center gap-4 sm:mt-4 lg:mt-3 lg:justify-between">
+        {" "}
         <button
           type="button"
           onClick={showPrevious}
@@ -610,12 +664,10 @@ export default function Projects() {
         >
           <ChevronLeft size={26} />
         </button>
-
         <span className="text-sm font-medium text-white [text-shadow:0_1px_4px_rgba(0,0,0,0.7)]">
           {String(startIndex + 1).padStart(2, "0")} /{" "}
           {String(projects.length).padStart(2, "0")}
         </span>
-
         <button
           type="button"
           onClick={showNext}
@@ -627,15 +679,19 @@ export default function Projects() {
       </div>
 
       {/* Project detail modal */}
-      <AnimatePresence>
-        {activeProject && (
-          <ProjectModal
-            key={activeProject.id}
-            project={activeProject}
-            onClose={() => setActiveProject(null)}
-          />
+      {typeof document !== "undefined" &&
+        createPortal(
+          <AnimatePresence>
+            {activeProject && (
+              <ProjectModal
+                key={activeProject.id}
+                project={activeProject}
+                onClose={() => setActiveProject(null)}
+              />
+            )}
+          </AnimatePresence>,
+          document.body,
         )}
-      </AnimatePresence>
     </section>
   );
 }

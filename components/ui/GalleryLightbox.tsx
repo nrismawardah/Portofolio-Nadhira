@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useEffect } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import { X, ChevronLeft, ChevronRight } from "lucide-react";
+import { createPortal } from "react-dom";
 
 export type GalleryPhoto = {
   src: string;
@@ -59,9 +60,9 @@ export default function GalleryLightbox({
 
   if (!photo) return null;
 
-  return (
+  return createPortal(
     <motion.div
-      className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/80 p-4 backdrop-blur-sm sm:p-8"
+      className="fixed inset-0 z-[99999] flex items-center justify-center bg-black/80 p-4 backdrop-blur-sm sm:p-8"
       onClick={onClose}
       role="dialog"
       aria-modal="true"
@@ -141,6 +142,7 @@ export default function GalleryLightbox({
       >
         <ChevronRight size={28} />
       </button>
-    </motion.div>
+    </motion.div>,
+    document.body,
   );
 }

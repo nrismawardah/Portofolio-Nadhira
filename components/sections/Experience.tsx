@@ -10,12 +10,12 @@ import {
   Paperclip,
   X,
 } from "lucide-react";
-
 import PhotoFrame from "@/components/ui/PhotoFrame";
 import SmallPhotoFrame from "@/components/ui/SmallPhotoFrame";
 import GalleryLightbox, {
   type GalleryPhoto,
 } from "@/components/ui/GalleryLightbox";
+import { createPortal } from "react-dom";
 
 type FolderPhoto = {
   src: string;
@@ -263,12 +263,19 @@ function MobileFolder({
       type="button"
       onClick={onClick}
       aria-label={`Open ${folder.name} folder`}
-      className="flex min-w-0 flex-col items-center gap-1 text-center text-xs text-neutral-800"
+      className="flex min-w-0 flex-col items-center gap-1 text-center text-xs text-neutral-800 md:gap-2 md:text-sm"
       whileHover={{ y: -4, scale: 1.04 }}
       whileTap={{ scale: 0.95 }}
     >
-      <FolderIcon size={40} />
-      <span>{folder.name}</span>
+      <span className="md:hidden">
+        <FolderIcon size={40} />
+      </span>
+
+      <span className="hidden md:block lg:hidden">
+        <FolderIcon size={70} />
+      </span>
+
+      <span className="font-medium">{folder.name}</span>
     </motion.button>
   );
 }
@@ -321,7 +328,8 @@ function FloatingSticker({
 
 function ExperienceNotes() {
   return (
-    <div className="relative w-full rounded-md bg-[#faf7f2] p-5 text-neutral-900 shadow-[0_10px_25px_rgba(40,80,110,0.16)] sm:p-7 lg:min-h-[440px]">
+    <div className="relative w-full rounded-md bg-[#faf7f2] p-5 text-neutral-900 shadow-[0_10px_25px_rgba(40,80,110,0.16)] sm:p-7 md:p-5 lg:min-h-[440px]">
+      {" "}
       <div className="mb-6 flex items-center justify-between text-[#e9a51b]">
         <div className="flex items-center gap-2">
           <ChevronLeft size={23} strokeWidth={1.5} />
@@ -333,7 +341,6 @@ function ExperienceNotes() {
           <MoreHorizontal size={27} strokeWidth={1.5} />
         </div>
       </div>
-
       <div className="border-l-[3px] border-neutral-300 pl-3 text-base leading-relaxed sm:text-lg">
         <h3 className="font-bold">Web Developer Intern</h3>
 
@@ -347,16 +354,14 @@ function ExperienceNotes() {
 
         <p className="font-bold">To be continued...</p>
       </div>
-
       <FloatingSticker
         src="/stickers/laptop.png"
-        className="-left-3 top-[65%] z-10 -rotate-12 w-8 lg:-left-[7%] sm:w-[55px]"
+        className="-left-3 top-[65%] z-10 -rotate-12 w-8 lg:-left-[5%] sm:w-[50px] md:w-[40px] md:-left-[3%]"
         delay={0.2}
       />
-
       <FloatingSticker
         src="/stickers/star.png"
-        className="bottom-5 -right-4 rotate-12 z-20 w-7 lg:bottom-[10%] lg:-right-[7%] sm:w-[50px]"
+        className="bottom-5 -right-4 rotate-12 z-20 w-7 lg:bottom-[10%] lg:-right-[7%] sm:w-[50px] md:w-[40px] md:-right-[3%]"
         delay={0.2}
       />
     </div>
@@ -405,9 +410,9 @@ function ExperienceLightbox({
     };
   }, [folder.photos.length, onClose]);
 
-  return (
+  return createPortal(
     <motion.div
-      className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/75 p-4 backdrop-blur-sm sm:p-8"
+      className="fixed inset-0 z-[99999] flex items-center justify-center bg-black/75 p-4 backdrop-blur-sm sm:p-8"
       role="dialog"
       aria-modal="true"
       aria-label={`${folder.name} photo gallery`}
@@ -534,7 +539,8 @@ function ExperienceLightbox({
           <ChevronRight size={28} />
         </button>
       )}
-    </motion.div>
+    </motion.div>,
+    document.body,
   );
 }
 
@@ -561,9 +567,9 @@ function CertificateLightbox({
     };
   }, [onClose]);
 
-  return (
+  return createPortal(
     <motion.div
-      className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/80 p-4 backdrop-blur-sm sm:p-8"
+      className="fixed inset-0 z-[99999] flex items-center justify-center bg-black/75 p-4 backdrop-blur-sm sm:p-8"
       role="dialog"
       aria-modal="true"
       aria-label="Internship certificate"
@@ -599,7 +605,8 @@ function CertificateLightbox({
           priority
         />
       </motion.div>
-    </motion.div>
+    </motion.div>,
+    document.body,
   );
 }
 
@@ -615,7 +622,7 @@ export default function Experience() {
   return (
     <section
       id="experience"
-      className="relative isolate overflow-hidden bg-cover bg-center px-5 py-14 sm:px-8 sm:py-16 lg:px-12 lg:py-16"
+      className="relative isolate overflow-x-clip bg-cover bg-center px-5 py-10 sm:px-8 sm:py-12 lg:overflow-visible lg:px-8 lg:py-0 xl:px-12"
       style={{
         backgroundImage: "url('/images/experience/background.png')",
       }}
@@ -624,24 +631,23 @@ export default function Experience() {
 
       {/* EDUCATION */}
 
-      <div className="mx-auto w-full max-w-[1440px]">
+      <div className="mx-auto flex min-h-0 w-full max-w-[1440px] flex-col justify-center md:min-h-dvh md:-translate-y-15 md:py-4 lg:min-h-dvh lg:translate-y-0 lg:py-5">
+        {" "}
         <motion.h2
           initial={{ opacity: 0, y: 12 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.45 }}
-          className="mb-10 text-center text-3xl font-normal tracking-tight text-black sm:mb-12 sm:text-4xl lg:mb-14 lg:ml-4 lg:text-left lg:text-[clamp(2.5rem,4.5vw,4rem)]"
+          className="mb-5 text-center text-2xl font-normal tracking-tight text-black sm:mb-6 sm:text-3xl lg:mb-5 lg:ml-4 lg:text-left lg:text-[clamp(2rem,3.2vw,3rem)]"
         >
           Education &amp;{" "}
           <span className="font-serif italic">
             <span className="bg-yellow-300 px-1">Experience</span>
           </span>
         </motion.h2>
-
-        <div className="grid grid-cols-2 items-start gap-x-3 gap-y-5 sm:gap-x-5 sm:gap-y-6 lg:grid-cols-12 lg:items-start lg:gap-6">
-          {" "}
+        <div className="grid grid-cols-2 items-start gap-x-3 gap-y-5 sm:gap-x-5 sm:gap-y-6 md:grid-cols-12 md:gap-x-5 md:gap-y-3 lg:grid-cols-12 lg:items-start lg:gap-6">
           {/* UNIVERSITY PHOTOS: UMY ABOVE CAPSTONE */}
-          <div className="relative col-start-1 row-start-1 mx-auto min-h-[220px] w-full max-w-[400px] sm:min-h-[270px] lg:col-span-3 lg:row-auto lg:min-h-[510px]">
+          <div className="relative col-start-1 row-start-1 mx-auto min-h-[220px] w-full max-w-[400px] sm:min-h-[270px] md:col-span-6 md:col-start-1 md:row-start-1 md:min-h-[250px] lg:col-span-3 lg:row-auto lg:min-h-[380px]">
             {/* Capstone: bottom layer */}
             <motion.div
               initial={{ opacity: 0, y: 12 }}
@@ -686,14 +692,14 @@ export default function Experience() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.55 }}
-            className="relative col-start-2 row-start-1 mx-auto w-full max-w-[420px] lg:col-span-4 lg:row-auto lg:max-w-none"
+            className="relative col-start-2 row-start-1 mx-auto w-full max-w-[420px] md:col-span-6 md:col-start-7 md:row-start-1 md:max-w-[320px] lg:col-span-4 lg:row-auto lg:max-w-none"
           >
             <FloatingSticker
               src="/stickers/love-you-gesture.png"
-              className="-left-3 -top-4 z-20 w-8 rotate-12 sm:-left-3 sm:-top-5 sm:w-12 "
+              className="-left-3 -top-4 z-20 w-8 rotate-12 sm:left-1 sm:-top-1 sm:w-12 md:-left-5"
             />
 
-            <div className="relative mx-auto aspect-[1080/1305] w-full">
+            <div className="relative mx-auto aspect-[1080/1305] w-full sm:top-5 md:top-0 lg:max-w-[90%]">
               <Image
                 src="/images/experience/chat-education.png"
                 alt="A conversation about graduation and paper acceptance"
@@ -705,14 +711,14 @@ export default function Experience() {
             </div>
           </motion.div>
           {/* GRADUATION: PHOTOFRAME; SIDANG: SMALLPHOTOFRAME ON TOP */}
-          <div className="relative col-start-1 row-start-2 mx-auto min-h-[250px] w-full max-w-[400px] sm:min-h-[300px] lg:col-span-5 lg:row-auto lg:min-h-[540px]">
+          <div className="relative col-start-1 row-start-2 mx-auto min-h-[250px] w-full max-w-[400px] sm:min-h-[300px] md:col-span-6 md:col-start-1 md:row-start-2 md:mt-0 md:min-h-[270px] lg:col-span-5 lg:row-auto lg:min-h-[400px]">
             {/* Graduation: main photo */}
             <motion.div
               initial={{ opacity: 0, y: 12 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
-              className="absolute left-[3%] top-7 z-10 w-[73%] rotate-[-1deg] sm:w-[76%] lg:top-[-20%]"
+              className="absolute left-[3%] top-7 z-10 w-[73%] rotate-[-1deg] sm:w-[60%] lg:top-[-20%]"
             >
               <PhotoFrame
                 src="/images/experience/graduate.jpeg"
@@ -729,7 +735,7 @@ export default function Experience() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.12 }}
-              className="absolute right-[0%] top-[38%] z-30 w-[43%] rotate-[2deg] sm:top-[20%] sm:w-[46%]"
+              className="absolute right-[0%] top-[38%] z-30 w-[43%] rotate-[2deg] sm:top-[10%] sm:right-[10%] sm:w-[35%] md:top-[40%]"
             >
               <SmallPhotoFrame
                 src="/images/experience/sidang.jpeg"
@@ -741,19 +747,19 @@ export default function Experience() {
 
             <FloatingSticker
               src="/stickers/woman-student.png"
-              className="right-[14%] top-[9%] rotate-12 z-30 w-9 sm:right-14 sm:-top-30 sm:w-14"
+              className="right-[14%] top-[9%] z-30 w-9 rotate-12 sm:right-30 sm:-top-23 sm:w-14 md:right-[30%] md:top-[5%] md:w-12 lg:right-30 lg:-top-23 lg:w-14"
               delay={0.1}
             />
 
             <FloatingSticker
               src="/stickers/sparkles.png"
-              className="right-[3%] top-[24%] -rotate-12 z-30 w-6 lg:right-[5%] lg:top-[-12%] sm:w-9"
+              className="right-[3%] top-[24%] z-30 w-6 -rotate-12 sm:w-9 md:right-[18%] md:top-[22%] md:w-8 lg:right-[18%] lg:top-[-12%] lg:w-9"
               delay={0.3}
             />
 
             <FloatingSticker
               src="/stickers/star.png"
-              className="-right-[70%] bottom-[45%] rotate-12 z-30 w-8 lg:right-[70%] lg:bottom-[30%] sm:w-10"
+              className="-right-[70%] bottom-[45%] z-30 w-8 rotate-12 sm:w-10 md:right-[-60%] md:bottom-[25%] md:w-8 lg:right-[65%] lg:bottom-[23%] lg:w-10"
               delay={0.3}
             />
 
@@ -762,53 +768,51 @@ export default function Experience() {
             <div className="absolute inset-0 z-20 hidden lg:block">
               <DesktopFolder
                 folder={educationFolders[0]}
-                position="left-[1%] bottom-[15%]"
+                position="left-[1%] bottom-[12%]"
                 onClick={() => setActiveFolder(educationFolders[0])}
               />
 
               <DesktopFolder
                 folder={educationFolders[1]}
-                position="right-[40%] bottom-[20%]"
+                position="right-[40%] bottom-[10%]"
                 onClick={() => setActiveFolder(educationFolders[1])}
               />
 
               <DesktopFolder
                 folder={educationFolders[2]}
-                position="left-[25%] bottom-[3%]"
+                position="left-[20%] -bottom-[6%]"
                 onClick={() => setActiveFolder(educationFolders[2])}
               />
 
               <DesktopFolder
                 folder={educationFolders[3]}
-                position="right-[10%] bottom-[12%]"
+                position="right-[10%] bottom-[2%]"
                 onClick={() => setActiveFolder(educationFolders[3])}
               />
             </div>
           </div>
           {/* FOLDERS FOR SMALLER SCREENS: SCATTERED LAYOUT */}
-          <div className="relative mx-auto mt-6 h-[270px] w-full max-w-[500px] sm:mt-8 sm:h-[320px] lg:hidden">
-            <div className="absolute left-[8%] top-[20%]">
+          <div className="relative mx-auto mt-6 h-[270px] w-full max-w-[500px] sm:mt-8 sm:h-[320px] md:col-span-5 md:row-start-2 md:mt-25 md:h-[110px] md:max-w-[420px] lg:hidden">
+            {" "}
+            <div className="absolute left-[8%] top-[20%] md:left-[5%] md:top-5">
               <MobileFolder
                 folder={educationFolders[0]}
                 onClick={() => setActiveFolder(educationFolders[0])}
               />
             </div>
-
-            <div className="absolute left-[47%] top-[2%]">
+            <div className="absolute left-[47%] top-[2%] md:left-[50%] md:-top-12">
               <MobileFolder
                 folder={educationFolders[1]}
                 onClick={() => setActiveFolder(educationFolders[1])}
               />
             </div>
-
-            <div className="absolute left-[30%] top-[50%]">
+            <div className="absolute left-[30%] top-[50%] md:left-[40%] md:top-[110%]">
               <MobileFolder
                 folder={educationFolders[2]}
                 onClick={() => setActiveFolder(educationFolders[2])}
               />
             </div>
-
-            <div className="absolute right-[3%] top-[33%]">
+            <div className="absolute right-[3%] top-[33%] md:-right-[10%] md:top-[50%]">
               <MobileFolder
                 folder={educationFolders[3]}
                 onClick={() => setActiveFolder(educationFolders[3])}
@@ -819,7 +823,8 @@ export default function Experience() {
       </div>
 
       {/* EXPERIENCE: THREE ROWS ON MOBILE */}
-      <div className="mx-auto grid w-full max-w-[1440px] grid-cols-1 items-start gap-6 border-t-0 pt-0 sm:mt-10 sm:gap-8 lg:mt-10 lg:grid-cols-12 lg:gap-10">
+      <div className="mx-auto grid w-full max-w-[1440px] grid-cols-1 items-start gap-6 border-t-0 pt-0 pb-16 sm:mt-10 sm:gap-8 sm:pb-20 md:-mt-15 md:gap-7 md:pb-12 lg:mt-10 lg:grid-cols-12 lg:gap-10 lg:pb-24">
+        {" "}
         {/* Mobile title - Row 1 */}
         <motion.h3
           initial={{ opacity: 0, y: 12 }}
@@ -830,7 +835,6 @@ export default function Experience() {
         >
           [ Experience Archived ]
         </motion.h3>
-
         {/* Notes - Row 2 */}
         <motion.div
           className="relative col-span-1 min-w-0 lg:col-span-6 lg:row-span-2"
@@ -841,7 +845,6 @@ export default function Experience() {
         >
           <ExperienceNotes />
         </motion.div>
-
         {/* Experience photos - Row 3 */}
         <div className="relative col-span-1 mx-auto w-full min-w-0 max-w-[650px] lg:col-span-6">
           {/* Desktop title */}
