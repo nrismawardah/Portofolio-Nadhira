@@ -18,27 +18,29 @@ export default function Navbar() {
   useEffect(() => {
     const sections = navItems
       .map((item) => document.getElementById(item.id))
-      .filter(Boolean);
+      .filter((section): section is HTMLElement => section !== null);
 
     const observer = new IntersectionObserver(
       (entries) => {
-        const visibleSection = entries
+        const visibleSections = entries
           .filter((entry) => entry.isIntersecting)
-          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+          .map((entry) => ({
+            id: entry.target.id,
+            top: entry.boundingClientRect.top,
+          }))
+          .sort((a, b) => a.top - b.top);
 
-        if (visibleSection) {
-          setActiveSection(visibleSection.target.id);
+        if (visibleSections.length > 0) {
+          setActiveSection(visibleSections[0].id);
         }
       },
       {
-        threshold: [0.2, 0.5, 0.75],
-        rootMargin: "-20% 0px -50% 0px",
+        threshold: 0,
+        rootMargin: "-20% 0px -65% 0px",
       },
     );
 
-    sections.forEach((section) => {
-      if (section) observer.observe(section);
-    });
+    sections.forEach((section) => observer.observe(section));
 
     return () => observer.disconnect();
   }, []);

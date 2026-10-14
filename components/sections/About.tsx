@@ -24,59 +24,59 @@ type Obsession = {
 const obsessions: Obsession[] = [
   {
     title: "Joy",
-    subtitle: "my pretty girl",
+    subtitle: "a little appreciation for her effortless charm",
     src: "/images/about/joy.jpg",
     description:
-      "she's my biggest girl crush, like HELLO??? the visuals, the voice, the smile... this woman can literally do no wrong in my eyes. if joy has zero fans, i'm probably dead",
+      "a fan of her bright energy, timeless visuals, and the kind of presence that makes every appearance memorable.",
   },
   {
     title: "Movies",
-    subtitle: "movieholic",
+    subtitle: "plot twists over predictable endings",
     src: "/images/about/movie.jpg",
     description:
-      "i love watching movies (and series too, obviously). my favorite genres are thriller, mystery, dystopian, and anything that makes me question everything at 2 a.m. plot twists are my weakness. bonus points if the ending leaves me staring at the wall",
+      "thrillers, mysteries, and dystopian stories are my favorites. i love films that keep me guessing and leave me thinking long after the credits roll.",
   },
   {
     title: "Doja Cat",
-    subtitle: "my music rotation",
+    subtitle: "genre-bending music on repeat",
     src: "/images/about/doja-cat.jpg",
     description:
-      "name one good album besides Planet Her... i'll wait. okay, but seriously, her music is SO addictive. the versatility, the visuals, the whole vibe??? she could release a song about literally anything and i'd probably have it on repeat",
+      "her music keeps my playlists unpredictable. from catchy hooks to bold production, there's always something interesting to listen to.",
   },
   {
     title: "TREASURE",
-    subtitle: "teume mode: ON",
+    subtitle: "good music, better company",
     src: "/images/about/treasure.jpg",
     description:
-      "i loveee listening to treasure (fun fact: i've been listening to nothing but treasure while making this entire portfolio). and TREASURE MAP??? my comfort show, my therapy, my free serotonin. these boys are so unserious and i love them for it",
+      "their music and treasure map episodes are my go-to comfort watch. a little reminder that entertainment can make an ordinary day better.",
   },
   {
     title: "Painting",
-    subtitle: "little artist",
+    subtitle: "my favorite way to slow down",
     src: "/images/about/painting.jpg",
     description:
-      "i've loved painting since i was little, and honestly, it's still one of my favorite ways to escape reality for a bit. give me some paint, a brush, and a free afternoon, and i'll be busy for hours. am i good at it? depends on the day LMAO",
+      "painting gives me room to experiment, make a mess, and enjoy the process without needing every result to be perfect.",
   },
   {
     title: "The Sims",
-    subtitle: "forever a sims girlie",
+    subtitle: "building little worlds, one sim at a time",
     src: "/images/about/sims.jpg",
     description:
-      "the only game i can play without getting bored. i can spend hours building houses, making my sims' lives unnecessarily complicated, and creating whole storylines instead of doing what i'm actually supposed to do. real life? stressful. sims life? also stressful, but at least i can control it",
+      "from designing houses to creating chaotic storylines, i love the freedom to build worlds and tell stories my own way.",
   },
   {
     title: "Tiramisu",
-    subtitle: "one more bite",
+    subtitle: "my weakness has layers",
     src: "/images/about/tiramisu.jpg",
     description:
-      "who doesn't like tiramisu??? coffee, cream, cocoa... literally the perfect combination. put a slice in front of me and suddenly all my problems can wait. if loving tiramisu is wrong, i don't wanna be right",
+      "coffee, cocoa, and creamy layers. some things don't need a complicated explanation to be a favorite.",
   },
   {
     title: "Studio Ghibli",
     subtitle: "somewhere magical",
     src: "/images/about/ghibli.jpg",
     description:
-      "i've watched all the ghibli movies, and somehow they still make me feel things every single time. the art, the music, the little details, the cozy-but-slightly-existential vibes... i just wanna live in one of these movies and never come back",
+      "i love the quiet details, imaginative worlds, and gentle yet meaningful stories that make these films feel comforting and thought-provoking.",
   },
 ];
 
@@ -129,9 +129,7 @@ export default function About() {
 
       {/* MAIN GRID */}
       <div
-        className="
-    mx-auto grid w-full max-w-[1440px]
-    grid-cols-2 items-start gap-x-3 gap-y-7
+        className=" mx-auto grid w-full max-w-[1440px] grid-cols-2 items-start gap-x-3 gap-y-7
     sm:gap-x-5 sm:gap-y-10
 
     md:h-full md:grid-cols-12 md:grid-rows-[auto_auto]
@@ -334,7 +332,7 @@ export default function About() {
   lg:mb-3 lg:text-left lg:text-[20px]
 "
           >
-            (things i obsessed with...)
+            (little things i love...)
           </h2>
 
           <div

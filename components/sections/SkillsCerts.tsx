@@ -476,9 +476,9 @@ export default function SkillsCerts() {
               transition={{ duration: 0.45, delay: 0.08 }}
               className="mt-4 w-full text-right text-base leading-snug tracking-tight sm:mt-6 sm:text-lg lg:text-[21px]"
             >
-              the tools that help me turn ideas into real things. from data
-              exploration to model development and web apps. this is what i use
-              to build, analyze, and create.
+              the tools I use to turn ideas into practical solutions — from data
+              exploration and machine learning to web development and
+              user-focused applications.
             </motion.p>
           </div>
 

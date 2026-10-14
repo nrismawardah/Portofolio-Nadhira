@@ -65,21 +65,21 @@ const educationFolders: ExperienceFolder[] = [
         alt: "KMTI",
         title: "KMTI",
         description:
-          "KMTI is a student organization for Information Technology UMY students to develop their skills, build connections, and make positive contributions.",
+          "KMTI is the student organization for Information Technology students at UMY, providing a platform to develop skills, collaborate with peers, and contribute to the student community through organizational programs.",
       },
       {
         src: "/images/experience/kmti1.jpeg",
         alt: "KMTI",
         title: "KMTI",
         description:
-          "I joined the Arts, Culture, and Sports (SBO) division in 2022–2023, where I was responsible for one of the division's work programs.",
+          "As a member of the Arts, Culture, and Sports (SBO) division in 2022–2023, I took responsibility for one of the division's work programs, contributing to its planning and execution to support the division's annual activities.",
       },
       {
         src: "/images/experience/kmti3.jpeg",
         alt: "KMTI",
         title: "KMTI",
         description:
-          "In 2023–2024, I became the division's secretary, handling administrative tasks and helping ensure that all programs ran smoothly.",
+          "In 2023–2024, I served as the division's secretary, managing administrative documentation and activity reports, monitoring program implementation, and supporting internal coordination to keep activities organized and aligned with established plans.",
       },
     ],
   },
@@ -93,21 +93,21 @@ const educationFolders: ExperienceFolder[] = [
         alt: "MATAF",
         title: "MATAF",
         description:
-          "MATAF (Masa Ta'aruf) is an orientation program that introduces new students to campus life. In 2023, I joined the organizing committee at both the Faculty of Engineering and Information Technology levels.",
+          "MATAF (Masa Ta'aruf) is a student orientation program introducing new students to campus life, academic culture, and their student community. In 2023, I served on the organizing committees at both the Faculty of Engineering and Information Technology levels.",
       },
       {
         src: "/images/experience/mataf1.jpeg",
         alt: "MATAF",
         title: "MATAF",
         description:
-          "At the faculty level, I was a group mentor, guiding and supporting new students throughout the program.",
+          "As a faculty-level group mentor, I guided new students throughout the orientation program, helping them follow activities, understand program instructions, and adjust to the university environment.",
       },
       {
         src: "/images/experience/mataf3.jpeg",
         alt: "MATAF",
         title: "MATAF",
         description:
-          "At the department level, I joined the KSK division, handling administrative records and documents for committee members and participants, while also serving as a group mentor.",
+          "At the department level, I served in the KSK division, managing committee and participant records while also mentoring a group of new students. This dual responsibility supported both the administrative organization of the event and participants' engagement throughout the program.",
       },
     ],
   },
@@ -121,7 +121,7 @@ const educationFolders: ExperienceFolder[] = [
         alt: "IT-Specta",
         title: "IT-Specta",
         description:
-          "IT-SPECTA is an annual event organized by UMY's Information Technology study program, featuring a national seminar as well as sports and e-sports competitions. In 2024, I joined the organizing committee as a member of the Health division, helping provide health support and handle medical emergencies during the event.",
+          "IT-SPECTA is an annual Information Technology study program event featuring a national seminar and sports and e-sports competitions. As a Health Division committee member in 2024, I supported participant safety by providing health assistance and responding to medical incidents throughout the event.",
       },
     ],
   },
@@ -133,23 +133,23 @@ const educationFolders: ExperienceFolder[] = [
       {
         src: "/images/experience/portek.png",
         alt: "PORTEK",
-        title: "Portek",
+        title: "PORTEK",
         description:
-          "PORTEK is an annual sports competition and celebration organized by BEM KMFT UMY. In 2023, I joined the organizing committee as a member of the First Aid division (P3K), helping maintain participants' well-being and respond to medical emergencies throughout the event.",
+          "PORTEK is an annual sports competition organized by BEM KMFT UMY. In 2023, I joined the First Aid (P3K) division, supporting event safety by assisting participants who needed medical attention and helping the committee respond to health-related incidents.",
       },
       {
         src: "/images/experience/portek1.jpeg",
         alt: "PORTEK",
-        title: "Portek",
+        title: "PORTEK",
         description:
-          "In 2023, I joined the organizing committee as a member of the First Aid division (P3K), helping maintain participants' well-being and respond to medical emergencies throughout the event.",
+          "As part of the First Aid (P3K) team, I helped monitor participants' well-being and provided initial assistance to those experiencing health issues during the competition.",
       },
       {
         src: "/images/experience/portek2.jpeg",
         alt: "PORTEK",
-        title: "Portek",
+        title: "PORTEK",
         description:
-          "In 2023, I joined the organizing committee as a member of the First Aid division (P3K), helping maintain participants' well-being and respond to medical emergencies throughout the event.",
+          "I supported the event's on-site medical response by assisting participants in need and coordinating with the First Aid team to help maintain a safe competition environment.",
       },
     ],
   },
@@ -347,9 +347,14 @@ function ExperienceNotes() {
         <p>Diskominfosan Kota Yogyakarta (Nov 2025 – Jan 2026)</p>
 
         <ul className="ml-5 list-disc">
-          <li>Collaborated with a cross-functional team.</li>
-          <li>Used Git and GitHub for collaboration.</li>
-          <li>Documented requirements and tracked progress.</li>
+          <li>
+            Contributed to developing a bug reporting system, from requirements
+            analysis and UI/UX design to implementation and testing.
+          </li>
+          <li>
+            Collaborated with the team using Git and GitHub for version control
+            and development coordination.
+          </li>
         </ul>
 
         <p className="font-bold">To be continued...</p>
@@ -735,7 +740,7 @@ export default function Experience() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.12 }}
-              className="absolute right-[0%] top-[38%] z-30 w-[43%] rotate-[2deg] sm:top-[10%] sm:right-[10%] sm:w-[35%] md:top-[40%]"
+              className="absolute right-[0%] top-[38%] z-30 w-[43%] rotate-[2deg] lg:top-[10%] lg:right-[10%] sm:w-[35%] md:top-[40%]"
             >
               <SmallPhotoFrame
                 src="/images/experience/sidang.jpeg"
