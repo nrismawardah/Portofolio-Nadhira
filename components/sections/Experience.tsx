@@ -33,7 +33,7 @@ type ExperienceFolder = {
 
 const educationPhotos: GalleryPhoto[] = [
   {
-    src: "/images/experience/graduate.jpeg",
+    src: "/images/experience/graduate1.JPEG",
     alt: "Graduation day",
     filename: "graduate.png",
   },
@@ -726,7 +726,7 @@ export default function Experience() {
               className="absolute left-[3%] top-7 z-10 w-[73%] rotate-[-1deg] sm:w-[60%] lg:top-[-20%]"
             >
               <PhotoFrame
-                src="/images/experience/graduate.jpeg"
+                src="/images/experience/graduate1.JPEG"
                 alt="Graduation day"
                 filename="graduate.png"
                 width="100%"
