@@ -436,23 +436,6 @@ function ExperienceLightbox({
         <X size={24} />
       </button>
 
-      {folder.photos.length > 1 && (
-        <button
-          type="button"
-          aria-label="Previous photo"
-          onClick={(event) => {
-            event.stopPropagation();
-            setPhotoIndex(
-              (current) =>
-                (current - 1 + folder.photos.length) % folder.photos.length,
-            );
-          }}
-          className="absolute left-2 top-1/2 z-30 -translate-y-1/2 rounded-full bg-white/15 p-2 text-white hover:bg-white/30 sm:left-6"
-        >
-          <ChevronLeft size={28} />
-        </button>
-      )}
-
       <AnimatePresence mode="wait">
         <motion.div
           key={`${folder.id}-${photoIndex}`}
@@ -489,61 +472,47 @@ function ExperienceLightbox({
               {photo.description}
             </p>
 
-            <div className="mt-7 flex items-center justify-between">
-              <span className="text-xs text-neutral-500">
+            <div className="mt-7 flex items-center justify-center gap-4">
+              {folder.photos.length > 1 && (
+                <button
+                  type="button"
+                  aria-label="Previous photo"
+                  onClick={() =>
+                    setPhotoIndex(
+                      (current) =>
+                        (current - 1 + folder.photos.length) %
+                        folder.photos.length,
+                    )
+                  }
+                  className="rounded-full border border-[#e6d7d4] p-2 transition hover:bg-[#f0e6e3]"
+                >
+                  <ChevronLeft size={19} />
+                </button>
+              )}
+
+              <span className="min-w-[48px] text-center text-xs tabular-nums text-neutral-500">
                 {String(photoIndex + 1).padStart(2, "0")} /{" "}
                 {String(folder.photos.length).padStart(2, "0")}
               </span>
 
               {folder.photos.length > 1 && (
-                <div className="flex gap-2">
-                  <button
-                    type="button"
-                    aria-label="Previous photo"
-                    onClick={() =>
-                      setPhotoIndex(
-                        (current) =>
-                          (current - 1 + folder.photos.length) %
-                          folder.photos.length,
-                      )
-                    }
-                    className="rounded-full border border-[#e6d7d4] p-2 hover:bg-[#f0e6e3]"
-                  >
-                    <ChevronLeft size={19} />
-                  </button>
-
-                  <button
-                    type="button"
-                    aria-label="Next photo"
-                    onClick={() =>
-                      setPhotoIndex(
-                        (current) => (current + 1) % folder.photos.length,
-                      )
-                    }
-                    className="rounded-full border border-[#e6d7d4] p-2 hover:bg-[#f0e6e3]"
-                  >
-                    <ChevronRight size={19} />
-                  </button>
-                </div>
+                <button
+                  type="button"
+                  aria-label="Next photo"
+                  onClick={() =>
+                    setPhotoIndex(
+                      (current) => (current + 1) % folder.photos.length,
+                    )
+                  }
+                  className="rounded-full border border-[#e6d7d4] p-2 transition hover:bg-[#f0e6e3]"
+                >
+                  <ChevronRight size={19} />
+                </button>
               )}
             </div>
           </div>
         </motion.div>
       </AnimatePresence>
-
-      {folder.photos.length > 1 && (
-        <button
-          type="button"
-          aria-label="Next photo"
-          onClick={(event) => {
-            event.stopPropagation();
-            setPhotoIndex((current) => (current + 1) % folder.photos.length);
-          }}
-          className="absolute right-2 top-1/2 z-30 -translate-y-1/2 rounded-full bg-white/15 p-2 text-white hover:bg-white/30 sm:right-6"
-        >
-          <ChevronRight size={28} />
-        </button>
-      )}
     </motion.div>,
     document.body,
   );

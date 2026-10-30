@@ -258,7 +258,7 @@ function CertificationsSection() {
       className="relative isolate overflow-hidden bg-[linear-gradient(to_bottom,#ffffff_0%,#ffffff_12%,#e4f5d2_30%,#b5e68a_52%,#8acd01_78%,#8acd01_100%)] px-5 py-6 sm:px-8 sm:py-7 lg:h-dvh lg:min-h-0 lg:px-12 lg:py-5"
     >
       {/* Background decoration */}
-      <div className="pointer-events-none absolute inset-0 z-0">
+      <div className="pointer-events-none absolute inset-0 z-20">
         <motion.div
           animate={{ y: [0, -6, 0] }}
           whileHover={{ scale: 1.15, rotate: 5 }}
@@ -271,7 +271,7 @@ function CertificationsSection() {
             scale: { duration: 0.2 },
             rotate: { duration: 0.2 },
           }}
-          className="pointer-events-auto absolute left-[3%] top-5 z-20 w-10 cursor-pointer sm:left-[4%] sm:top-6 sm:w-12"
+          className="pointer-events-auto absolute left-[3%] top-3 z-30 w-7 cursor-pointer sm:left-[4%] sm:top-6 sm:w-12"
         >
           <Image
             src="/stickers/sparkles.png"

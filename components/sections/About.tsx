@@ -407,18 +407,6 @@ export default function About() {
                   <X size={24} />
                 </button>
 
-                <button
-                  type="button"
-                  aria-label="Previous photo"
-                  onClick={(event) => {
-                    event.stopPropagation();
-                    navigateLightbox(-1);
-                  }}
-                  className="absolute left-2 top-1/2 z-20 -translate-y-1/2 rounded-full bg-white/15 p-2 text-white transition hover:bg-white/30 sm:left-6 sm:p-3"
-                >
-                  <ChevronLeft size={28} />
-                </button>
-
                 <AnimatePresence mode="wait">
                   <motion.div
                     key={activeObsession.title}
@@ -455,47 +443,33 @@ export default function About() {
                         {activeObsession.description}
                       </p>
 
-                      <div className="mt-7 flex items-center justify-between">
-                        <span className="text-xs text-neutral-500">
+                      <div className="mt-7 flex items-center justify-center gap-4">
+                        <button
+                          type="button"
+                          aria-label="Previous photo"
+                          onClick={() => navigateLightbox(-1)}
+                          className="rounded-full border border-[#e6d7d4] p-2 transition hover:bg-[#f0e6e3]"
+                        >
+                          <ChevronLeft size={19} />
+                        </button>
+
+                        <span className="min-w-[48px] text-center text-xs tabular-nums text-neutral-500">
                           {String(activeIndex! + 1).padStart(2, "0")} /{" "}
                           {String(obsessions.length).padStart(2, "0")}
                         </span>
 
-                        <div className="flex gap-2">
-                          <button
-                            type="button"
-                            aria-label="Previous photo"
-                            onClick={() => navigateLightbox(-1)}
-                            className="rounded-full border border-[#e6d7d4] p-2 transition hover:bg-[#f0e6e3]"
-                          >
-                            <ChevronLeft size={19} />
-                          </button>
-
-                          <button
-                            type="button"
-                            aria-label="Next photo"
-                            onClick={() => navigateLightbox(1)}
-                            className="rounded-full border border-[#e6d7d4] p-2 transition hover:bg-[#f0e6e3]"
-                          >
-                            <ChevronRight size={19} />
-                          </button>
-                        </div>
+                        <button
+                          type="button"
+                          aria-label="Next photo"
+                          onClick={() => navigateLightbox(1)}
+                          className="rounded-full border border-[#e6d7d4] p-2 transition hover:bg-[#f0e6e3]"
+                        >
+                          <ChevronRight size={19} />
+                        </button>
                       </div>
                     </div>
                   </motion.div>
                 </AnimatePresence>
-
-                <button
-                  type="button"
-                  aria-label="Next photo"
-                  onClick={(event) => {
-                    event.stopPropagation();
-                    navigateLightbox(1);
-                  }}
-                  className="absolute right-2 top-1/2 z-20 -translate-y-1/2 rounded-full bg-white/15 p-2 text-white transition hover:bg-white/30 sm:right-6 sm:p-3"
-                >
-                  <ChevronRight size={28} />
-                </button>
               </motion.div>
             )}
           </AnimatePresence>,

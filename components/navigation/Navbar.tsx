@@ -94,7 +94,20 @@ export default function Navbar() {
           aria-expanded={menuOpen}
           className="flex h-11 w-11 items-center justify-center rounded-full border border-black/10 bg-black/10 text-white shadow-sm backdrop-blur-md transition-transform hover:scale-105"
         >
-          <span className="text-lg leading-none">{menuOpen ? "×" : "☰"}</span>
+          <span className="relative flex h-5 w-5 items-center justify-center">
+            {menuOpen ? (
+              <>
+                <span className="absolute h-[1.5px] w-5 rotate-45 rounded-full bg-current" />
+                <span className="absolute h-[1.5px] w-5 -rotate-45 rounded-full bg-current" />
+              </>
+            ) : (
+              <span className="flex w-[19px] flex-col items-center justify-center gap-[5px]">
+                <span className="h-[1.5px] w-full rounded-full bg-current" />
+                <span className="h-[1.5px] w-full rounded-full bg-current" />
+                <span className="h-[1.5px] w-full rounded-full bg-current" />
+              </span>
+            )}
+          </span>
         </button>
       </div>
 

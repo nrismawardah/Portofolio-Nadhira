@@ -23,11 +23,74 @@ type Project = {
   technologies: string[];
   features: string[];
   year: string;
-  code2?: string;
-  liveDemo?: string;
+  liveUrl?: string;
+  repository?: string;
 };
 
 const projects: Project[] = [
+  {
+    id: "documind-id",
+    title: "DocuMind ID — AI Document Assistant",
+    images: [
+      "/images/projects/documind-landing.png",
+      "/images/projects/documind-dashboard.png",
+      "/images/projects/documind-document.png",
+      "/images/projects/documind-chat.png",
+    ],
+    description:
+      "Built an AI-powered Indonesian PDF assistant using Gemini LLM and RAG, generating context-based answers with page-level citations.",
+    overview:
+      "Developed DocuMind ID, a full-stack AI document assistant that enables users to upload Indonesian PDF documents and interact with their contents through natural language questions. Implemented a Retrieval-Augmented Generation (RAG) pipeline combining multilingual text embeddings, vector similarity search, and Google's Gemini LLM to retrieve relevant document context and generate evidence-based answers. The system also provides page-level citations to help users verify generated responses against the original documents.",
+    role: "Full-Stack Developer & AI Engineer",
+    contributions: [
+      "Designed and developed a full-stack document question-answering application using Next.js, TypeScript, and FastAPI.",
+      "Implemented a Retrieval-Augmented Generation (RAG) pipeline integrating document extraction, text chunking, embedding generation, semantic retrieval, and LLM-based response generation.",
+      "Integrated Google's Gemini LLM to generate context-grounded answers based on retrieved document content.",
+      "Implemented multilingual text embeddings using the multilingual-e5-base model to support semantic search across Indonesian documents.",
+      "Developed vector-based document retrieval using PostgreSQL and pgvector to identify relevant document chunks.",
+      "Implemented PDF processing and text extraction with PyMuPDF, pypdf, and Tesseract OCR.",
+      "Integrated page-level citations to provide traceable references to the original PDF documents.",
+      "Implemented authentication, document management, and secure data access using Supabase.",
+      "Developed backend APIs using FastAPI and performed automated testing with Pytest.",
+      "Deployed the frontend and backend using Vercel and DockHosting.",
+    ],
+    technologies: [
+      "Python",
+      "Next.js",
+      "FastAPI",
+      "Google Gemini",
+      "PostgreSQL",
+      "TypeScript",
+      "React",
+      "Tailwind CSS",
+      "RAG",
+      "Sentence Transformers",
+      "Multilingual E5",
+      "Supabase",
+      "pgvector",
+      "PyMuPDF",
+      "pypdf",
+      "Tesseract OCR",
+      "Pytest",
+      "Vercel",
+      "Docker",
+    ],
+    features: [
+      "Google Authentication",
+      "PDF document upload and management",
+      "AI-powered document question answering",
+      "Retrieval-Augmented Generation (RAG)",
+      "Semantic search using multilingual embeddings",
+      "Context-grounded answers using Gemini LLM",
+      "Page-level document citations",
+      "PDF text extraction and OCR support",
+      "Secure document storage and access",
+      "Responsive dashboard and mobile navigation",
+    ],
+    liveUrl: "https://documind-id.vercel.app",
+    repository: "https://github.com/nrismawardah/documind-id",
+    year: "2026",
+  },
   {
     id: "heart-prediction",
     title: "Heart Disease Prediction Website",
@@ -415,28 +478,28 @@ function ProjectModal({
             </div>
           </div>
 
-          {(project.code2 || project.liveDemo) && (
+          {(project.repository || project.liveUrl) && (
             <div className="mt-6 flex flex-wrap gap-3">
-              {project.code2 && (
+              {project.repository && (
                 <a
-                  href={project.code2}
+                  href={project.repository}
                   target="_blank"
-                  rel="noreferrer"
+                  rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 rounded-full border border-neutral-300 px-4 py-2 text-sm transition hover:bg-neutral-100"
                 >
                   <Code2 size={16} />
-                  Code
+                  Repository
                 </a>
               )}
 
-              {project.liveDemo && (
+              {project.liveUrl && (
                 <a
-                  href={project.liveDemo}
+                  href={project.liveUrl}
                   target="_blank"
-                  rel="noreferrer"
-                  className="inline-flex items-center gap-2 rounded-full bg-[#33351e] px-4 py-2 text-sm text-white transition hover:bg-[#4c5030]"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 rounded-full border border-neutral-300 px-4 py-2 text-sm transition hover:bg-neutral-100"
                 >
-                  Live demo
+                  Live Demo
                   <ExternalLink size={15} />
                 </a>
               )}
