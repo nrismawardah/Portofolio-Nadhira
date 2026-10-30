@@ -504,7 +504,7 @@ max-[1023px]:hidden        "
         className="
   absolute
   left-[9%]
-  top-[8%]
+  top-[5%]
   z-20
   w-[24vw]
   max-w-[105px]
@@ -532,7 +532,7 @@ max-[1023px]:hidden        "
         className="
           absolute
           right-[8%]
-          bottom-[28%]
+          bottom-[25%]
           z-20
           w-[20vw]
           max-w-[92px]
@@ -777,7 +777,7 @@ max-[1023px]:hidden        "
       <div
         className="
           absolute
-          bottom-[15%]
+          bottom-[12%]
           left-[8%]
           z-20
           h-[25%]
@@ -849,7 +849,7 @@ max-[1023px]:hidden        "
         transition={{ duration: 0.7, delay: 0.3 }}
         className="
           absolute
-          top-[10%]
+          top-[7%]
           right-[4%]
           z-20
           w-[23vw]

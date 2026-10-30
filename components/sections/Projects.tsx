@@ -167,49 +167,6 @@ const projects: Project[] = [
     year: "2025–2026",
   },
   {
-    id: "fish-freshness",
-    title: "Chanos chanos Freshness Detection Website",
-    images: [
-      "/images/projects/cc-highlyfresh.png",
-      "/images/projects/cc-fresh.png",
-      "/images/projects/cc-notfresh.png",
-    ],
-    description:
-      "Achieved 88.12% Top-1 and 100% Top-5 accuracy with YOLOv8 for milkfish freshness detection, integrating the selected model into a FastAPI web application.",
-    overview:
-      "Developed a computer vision application to classify milkfish (Chanos chanos) freshness from eye images. The project compared YOLOv8 and a custom Convolutional Neural Network (CNN), achieving 88.12% Top-1 and 100% Top-5 accuracy with YOLOv8. The custom CNN achieved 77% validation accuracy on 101 test samples, with the Highly Fresh class reaching 0.91 precision, recall, and F1-score. The selected model was integrated into a web application using FastAPI as the backend.",
-    role: "Computer Vision & Web Developer",
-    contributions: [
-      "Prepared and preprocessed eye images for milkfish freshness classification.",
-      "Trained and evaluated YOLOv8 and a custom CNN for image-based freshness classification.",
-      "Achieved 88.12% Top-1 and 100% Top-5 accuracy using YOLOv8.",
-      "Evaluated the custom CNN, achieving 77% validation accuracy on 101 test samples.",
-      "Analyzed class-level performance, with the Highly Fresh class achieving 0.91 precision, recall, and F1-score.",
-      "Integrated the selected model into a FastAPI-based web application for image prediction.",
-    ],
-    technologies: [
-      "Python",
-      "YOLOv8",
-      "CNN",
-      "TensorFlow",
-      "FastAPI",
-      "Keras",
-      "Jinja2",
-      "HTML",
-      "CSS",
-      "NumPy",
-      "Pillow",
-    ],
-    features: [
-      "Milkfish eye image upload and preview",
-      "Image preprocessing and resizing to 224 × 224 pixels",
-      "Freshness classification into Highly Fresh, Fresh, and Not Fresh",
-      "Prediction confidence and class probability display",
-      "FastAPI backend integration",
-    ],
-    year: "2025",
-  },
-  {
     id: "bug-reporting",
     title: "Bug Reporting and Handling Website",
     images: [
@@ -253,6 +210,49 @@ const projects: Project[] = [
       "Google OAuth authentication",
     ],
     year: "2025–2026",
+  },
+  {
+    id: "fish-freshness",
+    title: "Chanos chanos Freshness Detection Website",
+    images: [
+      "/images/projects/cc-highlyfresh.png",
+      "/images/projects/cc-fresh.png",
+      "/images/projects/cc-notfresh.png",
+    ],
+    description:
+      "Achieved 88.12% Top-1 and 100% Top-5 accuracy with YOLOv8 for milkfish freshness detection, integrating the selected model into a FastAPI web application.",
+    overview:
+      "Developed a computer vision application to classify milkfish (Chanos chanos) freshness from eye images. The project compared YOLOv8 and a custom Convolutional Neural Network (CNN), achieving 88.12% Top-1 and 100% Top-5 accuracy with YOLOv8. The custom CNN achieved 77% validation accuracy on 101 test samples, with the Highly Fresh class reaching 0.91 precision, recall, and F1-score. The selected model was integrated into a web application using FastAPI as the backend.",
+    role: "Computer Vision & Web Developer",
+    contributions: [
+      "Prepared and preprocessed eye images for milkfish freshness classification.",
+      "Trained and evaluated YOLOv8 and a custom CNN for image-based freshness classification.",
+      "Achieved 88.12% Top-1 and 100% Top-5 accuracy using YOLOv8.",
+      "Evaluated the custom CNN, achieving 77% validation accuracy on 101 test samples.",
+      "Analyzed class-level performance, with the Highly Fresh class achieving 0.91 precision, recall, and F1-score.",
+      "Integrated the selected model into a FastAPI-based web application for image prediction.",
+    ],
+    technologies: [
+      "Python",
+      "YOLOv8",
+      "CNN",
+      "TensorFlow",
+      "FastAPI",
+      "Keras",
+      "Jinja2",
+      "HTML",
+      "CSS",
+      "NumPy",
+      "Pillow",
+    ],
+    features: [
+      "Milkfish eye image upload and preview",
+      "Image preprocessing and resizing to 224 × 224 pixels",
+      "Freshness classification into Highly Fresh, Fresh, and Not Fresh",
+      "Prediction confidence and class probability display",
+      "FastAPI backend integration",
+    ],
+    year: "2025",
   },
 ];
 
