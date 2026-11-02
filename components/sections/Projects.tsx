@@ -101,18 +101,24 @@ const projects: Project[] = [
       "/images/projects/hd-riwayatprediksi.png",
       "/images/projects/hd-tambahprediksi.png",
     ],
+
     description:
-      "Achieved 99% accuracy in heart disease prediction using Random Forest and GridSearchCV, while investigating model generalization across 1,025 clinical records.",
+      "Developed a Random Forest-based heart disease prediction system and conducted research on the impact of training dataset expansion using 918 records from four UCI sources, evaluating model performance across different hyperparameter tuning strategies.",
+
     overview:
-      "Developed as my undergraduate thesis, this project combines machine learning research with a full-stack web application for heart disease prediction. I optimized a Random Forest model using GridSearchCV, achieving 99% accuracy, and compared Manual Tuning, GridSearchCV, and RandomizedSearchCV to evaluate model optimization approaches. The research further investigated how dataset size affects model generalization using 1,025 clinical records.",
-    role: "Researcher & Full-Stack Developer",
+      "Developed as an undergraduate research project, this work combines a full-stack heart disease prediction website with an experimental study on the effect of training dataset size on Random Forest performance. The research compares the Cleveland benchmark dataset (303 records) with a multi-institutional dataset (918 records) constructed from four UCI Heart Disease sources. It evaluates Baseline Random Forest, Manual Tuning, GridSearchCV, and RandomizedSearchCV using a consistent experimental protocol. The study also compares Logistic Regression and Support Vector Machine (SVM) as established baselines, alongside repeated evaluation and learning-curve analysis to investigate model performance and stability across different training-set sizes.",
+
+    role: "Researcher & Full-Stack AI Developer",
+
     contributions: [
-      "Developed a machine learning-based web application for heart disease prediction using Random Forest.",
-      "Optimized model hyperparameters with GridSearchCV, achieving 99% accuracy.",
-      "Compared Manual Tuning, GridSearchCV, and RandomizedSearchCV to assess model performance.",
-      "Investigated the effect of dataset size on model generalization using 1,025 clinical records.",
-      "Integrated multiple trained prediction models into the web application, allowing users to select different models for prediction.",
-      "Evaluated model performance using accuracy, precision, recall, F1-score, and confusion matrices.",
+      "Developed a full-stack web application for heart disease prediction using Python, Flask, and MySQL.",
+      "Constructed a multi-institutional dataset containing 918 records from four UCI Heart Disease sources: Cleveland, Hungary, Switzerland, and VA Long Beach.",
+      "Conducted source-level data quality assessment, within-source deduplication, and preprocessing across 13 clinical predictor features.",
+      "Developed and evaluated Random Forest models using Baseline, Manual Tuning, GridSearchCV, and RandomizedSearchCV with five-fold stratified cross-validation.",
+      "Compared model performance between the 303-record Cleveland dataset and the 918-record multi-institutional dataset using an 80:20 stratified train-test split.",
+      "Evaluated Logistic Regression and Support Vector Machine (SVM) as additional classification baselines.",
+      "Analyzed model performance using accuracy, precision, recall, F1-score, ROC-AUC, and confusion matrices.",
+      "Conducted repeated evaluation across 10 random seeds and learning-curve analysis to investigate model stability at different training-set sizes.",
     ],
     technologies: [
       "Python",
@@ -125,12 +131,12 @@ const projects: Project[] = [
       "Seaborn",
     ],
     features: [
-      "Heart disease prediction using Random Forest",
-      "Multiple trained model selection",
+      "Heart disease prediction using machine learning",
       "Patient data management",
       "Detailed prediction results",
       "Prediction history tracking",
-      "Model optimization and evaluation",
+      "Multiple trained model selection",
+      "Model performance evaluation",
     ],
     year: "2025–2026",
   },
