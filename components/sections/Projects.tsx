@@ -141,38 +141,6 @@ const projects: Project[] = [
     year: "2025–2026",
   },
   {
-    id: "capstone-sd",
-    title: "SD Muhammadiyah Ambarketawang 2 Website",
-    images: [
-      "/images/projects/capstone-landing-page.png",
-      "/images/projects/capstone-sa-dashboard.png",
-      "/images/projects/capstone-sa-pendaftaran.png",
-      "/images/projects/capstone-sw-form.png",
-      "/images/projects/capstone-tu-konten.png",
-    ],
-    description:
-      "Designed and developed a school website concept combining public information, online student registration, and administrative workflows in a Laravel-based platform.",
-    overview:
-      "Developed as a team capstone project for SD Muhammadiyah Ambarketawang 2, this project focused on translating school requirements into a structured web-based system. My responsibilities as System Analyst and Web Developer included requirements analysis, system modeling, database relationship planning, and application implementation with the development team.",
-    role: "System Analyst & Web Developer",
-    contributions: [
-      "Analyzed and documented system requirements with the team.",
-      "Modeled system structure and workflows using Entity Relationship Diagrams (ERD), use case diagrams, and Business Process Model and Notation (BPMN).",
-      "Planned database relationships and functional workflows to guide implementation.",
-      "Collaborated on developing the application using Laravel, PHP, and MySQL.",
-      "Supported implementation of school information, student registration, and administrative features.",
-    ],
-    technologies: ["Laravel", "PHP", "MySQL", "HTML", "CSS", "JavaScript"],
-    features: [
-      "School information and landing page",
-      "Online student registration",
-      "Registration form management",
-      "Administrative dashboard",
-      "School content management",
-    ],
-    year: "2025–2026",
-  },
-  {
     id: "bug-reporting",
     title: "Bug Reporting and Handling Website",
     images: [
